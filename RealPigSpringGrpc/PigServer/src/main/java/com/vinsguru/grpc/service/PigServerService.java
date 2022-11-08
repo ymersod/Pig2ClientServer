@@ -16,7 +16,7 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
     {
         String productId = request.getProductId();
 
-        ArrayList<PigObject> pigs = new ArrayList<>();
+        ArrayList<PigObject> pigs = new ArrayList<>(); //Indeholder pigs som er fundet via database magic
 
         /*
         PigObject pig = PigObject.newBuilder()
@@ -28,6 +28,7 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
 
             Dette er Database Magi
          */
+
         PigsResponse response = PigsResponse.newBuilder()
             .addAllPigs(pigs)
             .build();
@@ -40,7 +41,16 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
     public void findProductsFromPigs(ProductRequest request, StreamObserver<ProductResponse>  responseObserver)
     {
         String pigId = request.getPigId();
+        ArrayList<ProductObject> products = new ArrayList<>(); //Indeholder products som er fundet via database magic
 
+        //Database Magic
+
+        ProductResponse response = ProductResponse.newBuilder()
+            .addAllProducts(products)
+            .build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
     }
 
     @Override

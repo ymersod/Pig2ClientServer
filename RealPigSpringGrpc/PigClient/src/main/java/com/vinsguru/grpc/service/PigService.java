@@ -1,7 +1,8 @@
 package com.vinsguru.grpc.service;
 
 import com.pigfarm.pig.*;
-import com.vinsguru.grpc.model.RealPig;
+import com.vinsguru.grpc.model.Pig;
+import com.vinsguru.grpc.model.Product;
 import io.grpc.StatusRuntimeException;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
@@ -14,17 +15,17 @@ public class PigService {
     @GrpcClient("pig-service")
     private PigServiceGrpc.PigServiceBlockingStub pigServiceBlockingStub;
 
-    public ArrayList<RealPig> findPigsFromProduct(final String productId)
+    public ArrayList<Pig> findPigsFromProduct(final String productId)
     {
         try{
             final PigsResponse response = this.pigServiceBlockingStub.findPigsFromProduct(PigsRequest.newBuilder()
                 .setProductId(productId)
                 .build());
 
-            ArrayList<RealPig> pigsToBeReturned = new ArrayList<>();
+            ArrayList<Pig> pigsToBeReturned = new ArrayList<>();
             for (PigObject pig: response.getPigsList())
             {
-                pigsToBeReturned.add(new RealPig(pig.getId(),pig.getWeight()));
+                pigsToBeReturned.add(new Pig(pig.getId(),pig.getWeight()));
             }
 
             return pigsToBeReturned;
@@ -32,6 +33,24 @@ public class PigService {
             throw e;
         }
     }
+
+    public ArrayList<Product> findProductFromPig(final String pigsId){
+        try{
+            final ProductResponse response = this.pigServiceBlockingStub.findProductsFromPigs(ProductRequest.newBuilder()
+                .setPigId(pigsId)
+                .build());
+
+            ArrayList<Product> productsToBeReturned = new ArrayList<Product>();
+            for (ProductObject product: response.getProductsList())
+            {
+                productsToBeReturned.add(new Product(product.getId(),product.getWeight()));
+            }
+            return productsToBeReturned;
+        }catch(Exception e){
+            throw e;
+        }
+    }
+
 
     public String sendMessage(final String name, final String lastname) {
         try {

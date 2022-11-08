@@ -38,7 +38,7 @@ message ProductResponse {
 
 message ProductObject {
   string id = 1;
-  string weight = 2;
+  double weight = 2;
 }
 
 

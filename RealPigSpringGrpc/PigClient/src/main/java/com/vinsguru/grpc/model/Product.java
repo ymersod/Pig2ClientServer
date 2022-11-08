@@ -1,11 +1,11 @@
 package com.vinsguru.grpc.model;
 
-public class RealPig
+public class Product
 {
   private String id;
   private double weight;
 
-  public RealPig(String id, double weight)
+  public Product(String id, double weight)
   {
     this.id = id;
     this.weight = weight;

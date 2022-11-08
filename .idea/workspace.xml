@@ -4,11 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22fb9467-3b28-443c-a1ad-7f8fc218fcce" name="Changes" comment="" />
+    <list default="true" id="22fb9467-3b28-443c-a1ad-7f8fc218fcce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/controller/PigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/controller/PigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/model/RealPig.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/model/Pig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/service/PigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/service/PigService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/vinsguru/grpc/service/PigServerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/vinsguru/grpc/service/PigServerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/src/main/proto/pig/pig.proto" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/src/main/proto/pig/pig.proto" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,12 +53,14 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "show.run.dashboard.notification": "false"
+    "show.run.dashboard.notification": "false",
+    "spring.configuration.checksum": "69dec2b4b83812b9dd806418e50569b6"
   }
 }]]></component>
   <component name="RunManager" selected="Spring Boot.PigClientServiceApplication">
@@ -69,6 +88,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667896422899</updated>
       <workItem from="1667896424583" duration="953000" />
+      <workItem from="1667901565932" duration="1594000" />
     </task>
     <servers />
   </component>
