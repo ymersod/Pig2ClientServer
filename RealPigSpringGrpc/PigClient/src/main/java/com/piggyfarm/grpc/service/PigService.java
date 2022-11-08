@@ -1,12 +1,9 @@
 package com.piggyfarm.grpc.service;
 
 import com.pigfarm.pig.*;
-<<<<<<< HEAD:RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/service/PigService.java
-import com.vinsguru.grpc.model.Pig;
-import com.vinsguru.grpc.model.Product;
-=======
-import com.piggyfarm.grpc.model.RealPig;
->>>>>>> d830abf2a5a5f1814979be034707a3263d54015f:RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/service/PigService.java
+
+import com.piggyfarm.grpc.model.Pig;
+import com.piggyfarm.grpc.model.Product;
 import io.grpc.StatusRuntimeException;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;

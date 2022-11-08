@@ -1,8 +1,9 @@
-package com.vinsguru.grpc.controller;
+package com.piggyfarm.grpc.controller;
 
-import com.vinsguru.grpc.model.Pig;
-import com.vinsguru.grpc.model.Product;
-import com.vinsguru.grpc.service.PigService;
+
+import com.piggyfarm.grpc.model.Pig;
+import com.piggyfarm.grpc.model.Product;
+import com.piggyfarm.grpc.service.PigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
