@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="22fb9467-3b28-443c-a1ad-7f8fc218fcce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/controller/PigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/controller/PigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/RealPig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/service/PigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/service/PigService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +55,13 @@
     &quot;spring.configuration.checksum&quot;: &quot;69dec2b4b83812b9dd806418e50569b6&quot;
   }
 }</component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
   <component name="RunManager" selected="Spring Boot.PigServerServiceApplication">
     <configuration name="PigClientServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="PigClient" />
@@ -107,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667896422899</updated>
       <workItem from="1667896424583" duration="953000" />
-      <workItem from="1667901565932" duration="2086000" />
+      <workItem from="1667901565932" duration="3450000" />
     </task>
     <servers />
   </component>
