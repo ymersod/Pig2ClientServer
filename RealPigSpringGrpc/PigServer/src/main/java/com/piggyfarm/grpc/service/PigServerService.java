@@ -3,31 +3,28 @@ package com.piggyfarm.grpc.service;
 import com.pigfarm.pig.*;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 @GrpcService
 public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
 
+    DataBaseAccess dataBaseAccess;
+
+    public PigServerService(DataBaseAccess dataBaseAccess) {
+        this.dataBaseAccess = dataBaseAccess;
+    }
+
     //DIS is where we call the JPA to do different stuff
     @Override
     public void findPigsFromProduct(PigsRequest request, StreamObserver<PigsResponse> responseObserver)
     {
-        String productId = request.getProductId();
+        int productId = Integer.parseInt(request.getProductId());
 
-        ArrayList<PigObject> pigs = new ArrayList<>(); //Indeholder pigs som er fundet via database magic
-
-        /*
-        PigObject pig = PigObject.newBuilder()
-            .setId("1")
-            .setWeight(30.10)
-            .build();
-
-        pigs.add(pig);
-
-            Dette er Database Magi
-         */
+        List<PigObject> pigs = dataBaseAccess.getPigsFromProduct(productId);
 
         PigsResponse response = PigsResponse.newBuilder()
             .addAllPigs(pigs)
@@ -40,10 +37,8 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
     @Override
     public void findProductsFromPigs(ProductRequest request, StreamObserver<ProductResponse>  responseObserver)
     {
-        String pigId = request.getPigId();
-        ArrayList<ProductObject> products = new ArrayList<>(); //Indeholder products som er fundet via database magic
-
-        //Database Magic
+        int pigId = Integer.parseInt(request.getPigId());
+        List<ProductObject> products = dataBaseAccess.getProductFromPigs(pigId); //Indeholder products som er fundet via database magic
 
         ProductResponse response = ProductResponse.newBuilder()
             .addAllProducts(products)
