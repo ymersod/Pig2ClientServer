@@ -13,8 +13,8 @@ public class PigController {
     @Autowired
     private PigService pigService;
 
-    @GetMapping("/")
-    public ArrayList<RealPig> getPigsFromProduct(@RequestParam(defaultValue = "1") String id){
+    @GetMapping("/pigs" )
+    public ArrayList<RealPig> getPigsFromProduct(@RequestParam String id){
         return pigService.findPigsFromProduct(id);
     }
 

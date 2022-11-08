@@ -26,11 +26,24 @@ message PigsResponse {
 message PigObject {
   string id = 1;
   double weight = 2;
+}
 
+message ProductRequest {
+  string pigId = 1;
+}
+
+message ProductResponse {
+  repeated ProductObject products = 1;
+}
+
+message ProductObject {
+  string id = 1;
+  string weight = 2;
 }
 
 
 service PigService {
   rpc SayHello(HelloRequest) returns (HelloResponse);
   rpc FindPigsFromProduct(PigsRequest) returns (PigsResponse);
+  rpc FindProductsFromPigs(ProductRequest) returns (ProductResponse);
 }

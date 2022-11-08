@@ -34,6 +34,11 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
         responseObserver.onCompleted();
     }
 
+    @Override
+    public void findProductsFromPig(ProductRequests request, StreamObserver<ProductResponse>  responseObserver)
+    {
+        String pigId = request.get
+    }
 
     @Override
     public void sayHello(HelloRequest request, StreamObserver<HelloResponse> responseObserver) {
