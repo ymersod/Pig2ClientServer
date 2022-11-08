@@ -1,4 +1,4 @@
-package com.vinsguru.grpc.model;
+package com.piggyfarm.grpc.model;
 
 public class Pig
 {
