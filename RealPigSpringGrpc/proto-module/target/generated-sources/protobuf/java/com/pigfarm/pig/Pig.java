@@ -24,6 +24,21 @@ public final class Pig {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_pig_HelloResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_pig_PigsRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_pig_PigsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_pig_PigsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_pig_PigsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_pig_PigObject_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_pig_PigObject_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -35,10 +50,14 @@ public final class Pig {
     java.lang.String[] descriptorData = {
       "\n\rpig/pig.proto\022\003pig\"3\n\014HelloRequest\022\021\n\t" +
       "firstName\030\001 \001(\t\022\020\n\010lastName\030\002 \001(\t\"!\n\rHel" +
-      "loResponse\022\020\n\010greeting\030\001 \001(\t2?\n\nPigServi" +
-      "ce\0221\n\010SayHello\022\021.pig.HelloRequest\032\022.pig." +
-      "HelloResponseB\023\n\017com.pigfarm.pigP\001b\006prot" +
-      "o3"
+      "loResponse\022\020\n\010greeting\030\001 \001(\t\" \n\013PigsRequ" +
+      "est\022\021\n\tproductId\030\001 \001(\t\",\n\014PigsResponse\022\034" +
+      "\n\004pigs\030\001 \003(\0132\016.pig.PigObject\"\'\n\tPigObjec" +
+      "t\022\n\n\002id\030\001 \001(\t\022\016\n\006weight\030\002 \001(\0012{\n\nPigServ" +
+      "ice\0221\n\010SayHello\022\021.pig.HelloRequest\032\022.pig" +
+      ".HelloResponse\022:\n\023FindPigsFromProduct\022\020." +
+      "pig.PigsRequest\032\021.pig.PigsResponseB\023\n\017co" +
+      "m.pigfarm.pigP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -64,6 +83,24 @@ public final class Pig {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_pig_HelloResponse_descriptor,
         new java.lang.String[] { "Greeting", });
+    internal_static_pig_PigsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_pig_PigsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_pig_PigsRequest_descriptor,
+        new java.lang.String[] { "ProductId", });
+    internal_static_pig_PigsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_pig_PigsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_pig_PigsResponse_descriptor,
+        new java.lang.String[] { "Pigs", });
+    internal_static_pig_PigObject_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_pig_PigObject_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_pig_PigObject_descriptor,
+        new java.lang.String[] { "Id", "Weight", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

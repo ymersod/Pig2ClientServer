@@ -59,6 +59,38 @@ public final class PigServiceGrpc {
      return getSayHelloMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.pigfarm.pig.PigsRequest,
+      com.pigfarm.pig.PigsResponse> getFindPigsFromProductMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "FindPigsFromProduct",
+      requestType = com.pigfarm.pig.PigsRequest.class,
+      responseType = com.pigfarm.pig.PigsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.pigfarm.pig.PigsRequest,
+      com.pigfarm.pig.PigsResponse> getFindPigsFromProductMethod() {
+    io.grpc.MethodDescriptor<com.pigfarm.pig.PigsRequest, com.pigfarm.pig.PigsResponse> getFindPigsFromProductMethod;
+    if ((getFindPigsFromProductMethod = PigServiceGrpc.getFindPigsFromProductMethod) == null) {
+      synchronized (PigServiceGrpc.class) {
+        if ((getFindPigsFromProductMethod = PigServiceGrpc.getFindPigsFromProductMethod) == null) {
+          PigServiceGrpc.getFindPigsFromProductMethod = getFindPigsFromProductMethod = 
+              io.grpc.MethodDescriptor.<com.pigfarm.pig.PigsRequest, com.pigfarm.pig.PigsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "pig.PigService", "FindPigsFromProduct"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.pigfarm.pig.PigsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.pigfarm.pig.PigsResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new PigServiceMethodDescriptorSupplier("FindPigsFromProduct"))
+                  .build();
+          }
+        }
+     }
+     return getFindPigsFromProductMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -93,6 +125,13 @@ public final class PigServiceGrpc {
       asyncUnimplementedUnaryCall(getSayHelloMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void findPigsFromProduct(com.pigfarm.pig.PigsRequest request,
+        io.grpc.stub.StreamObserver<com.pigfarm.pig.PigsResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getFindPigsFromProductMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -102,6 +141,13 @@ public final class PigServiceGrpc {
                 com.pigfarm.pig.HelloRequest,
                 com.pigfarm.pig.HelloResponse>(
                   this, METHODID_SAY_HELLO)))
+          .addMethod(
+            getFindPigsFromProductMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.pigfarm.pig.PigsRequest,
+                com.pigfarm.pig.PigsResponse>(
+                  this, METHODID_FIND_PIGS_FROM_PRODUCT)))
           .build();
     }
   }
@@ -131,6 +177,14 @@ public final class PigServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getSayHelloMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void findPigsFromProduct(com.pigfarm.pig.PigsRequest request,
+        io.grpc.stub.StreamObserver<com.pigfarm.pig.PigsResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getFindPigsFromProductMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -156,6 +210,13 @@ public final class PigServiceGrpc {
     public com.pigfarm.pig.HelloResponse sayHello(com.pigfarm.pig.HelloRequest request) {
       return blockingUnaryCall(
           getChannel(), getSayHelloMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.pigfarm.pig.PigsResponse findPigsFromProduct(com.pigfarm.pig.PigsRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getFindPigsFromProductMethod(), getCallOptions(), request);
     }
   }
 
@@ -184,9 +245,18 @@ public final class PigServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getSayHelloMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.pigfarm.pig.PigsResponse> findPigsFromProduct(
+        com.pigfarm.pig.PigsRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getFindPigsFromProductMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SAY_HELLO = 0;
+  private static final int METHODID_FIND_PIGS_FROM_PRODUCT = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -208,6 +278,10 @@ public final class PigServiceGrpc {
         case METHODID_SAY_HELLO:
           serviceImpl.sayHello((com.pigfarm.pig.HelloRequest) request,
               (io.grpc.stub.StreamObserver<com.pigfarm.pig.HelloResponse>) responseObserver);
+          break;
+        case METHODID_FIND_PIGS_FROM_PRODUCT:
+          serviceImpl.findPigsFromProduct((com.pigfarm.pig.PigsRequest) request,
+              (io.grpc.stub.StreamObserver<com.pigfarm.pig.PigsResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -271,6 +345,7 @@ public final class PigServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new PigServiceFileDescriptorSupplier())
               .addMethod(getSayHelloMethod())
+              .addMethod(getFindPigsFromProductMethod())
               .build();
         }
       }
