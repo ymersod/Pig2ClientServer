@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22fb9467-3b28-443c-a1ad-7f8fc218fcce" name="Changes" comment="" />
+    <list default="true" id="22fb9467-3b28-443c-a1ad-7f8fc218fcce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_example_proto_module_1_0_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/PigClientServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/PigClientServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/controller/PigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/controller/PigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/model/RealPig.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/RealPig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/vinsguru/grpc/service/PigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/service/PigService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/vinsguru/grpc/PigServerServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/PigServerServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/vinsguru/grpc/service/PigServerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/PigServerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/src/main/proto/calculator/calculator.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/src/main/proto/pig/pig.proto" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/src/main/proto/pigService/pigService.proto" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,18 +51,46 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "show.run.dashboard.notification": "false"
+    "show.run.dashboard.notification": "false",
+    "spring.configuration.checksum": "6a7fd94c71bffdc6485861ae947c90ec"
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.PigClientServiceApplication">
+  <component name="RunManager" selected="Spring Boot.PigClientServiceApplication (1)">
+    <configuration name="PigClientServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="PigClient" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.piggyfarm.grpc.PigClientServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.piggyfarm.grpc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PigClientServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="PigClient" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.vinsguru.grpc.PigClientServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PigServerServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="PigServer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.piggyfarm.grpc.PigServerServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.piggyfarm.grpc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -59,6 +102,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.PigClientServiceApplication (1)" />
+        <item itemvalue="Spring Boot.PigServerServiceApplication (1)" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -69,6 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667896422899</updated>
       <workItem from="1667896424583" duration="953000" />
+      <workItem from="1667901396597" duration="727000" />
     </task>
     <servers />
   </component>

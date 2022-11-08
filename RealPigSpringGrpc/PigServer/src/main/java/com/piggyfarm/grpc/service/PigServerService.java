@@ -1,4 +1,4 @@
-package com.vinsguru.grpc.service;
+package com.piggyfarm.grpc.service;
 
 import com.pigfarm.pig.*;
 import io.grpc.stub.StreamObserver;

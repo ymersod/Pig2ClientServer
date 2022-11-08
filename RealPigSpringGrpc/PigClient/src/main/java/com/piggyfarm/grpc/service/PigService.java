@@ -1,7 +1,7 @@
-package com.vinsguru.grpc.service;
+package com.piggyfarm.grpc.service;
 
 import com.pigfarm.pig.*;
-import com.vinsguru.grpc.model.RealPig;
+import com.piggyfarm.grpc.model.RealPig;
 import io.grpc.StatusRuntimeException;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
