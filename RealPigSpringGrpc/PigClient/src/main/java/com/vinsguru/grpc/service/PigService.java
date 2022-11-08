@@ -1,11 +1,12 @@
 package com.vinsguru.grpc.service;
 
-import com.pigfarm.pig.HelloRequest;
-import com.pigfarm.pig.HelloResponse;
-import com.pigfarm.pig.PigServiceGrpc;
+import com.pigfarm.pig.*;
+import com.vinsguru.grpc.model.RealPig;
 import io.grpc.StatusRuntimeException;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 @Service
 public class PigService {
@@ -13,6 +14,24 @@ public class PigService {
     @GrpcClient("pig-service")
     private PigServiceGrpc.PigServiceBlockingStub pigServiceBlockingStub;
 
+    public ArrayList<RealPig> findPigsFromProduct(final String productId)
+    {
+        try{
+            final PigsResponse response = this.pigServiceBlockingStub.findPigsFromProduct(PigsRequest.newBuilder()
+                .setProductId(productId)
+                .build());
+
+            ArrayList<RealPig> pigsToBeReturned = new ArrayList<>();
+            for (PigObject pig: response.getPigsList())
+            {
+                pigsToBeReturned.add(new RealPig(pig.getId(),pig.getWeight()));
+            }
+
+            return pigsToBeReturned;
+        }catch(Exception e){
+            throw e;
+        }
+    }
 
     public String sendMessage(final String name, final String lastname) {
         try {

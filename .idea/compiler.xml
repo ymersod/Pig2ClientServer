@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="proto-module" />
+        <module name="PigServer" />
+        <module name="PigClient" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="PigClient" target="11" />
+      <module name="PigServer" target="11" />
+      <module name="proto-module" target="11" />
+      <module name="RealPigSpringGrpc" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="PigClient" options="-parameters" />
+      <module name="PigServer" options="-parameters" />
+      <module name="proto-module" options="-parameters" />
+    </option>
+  </component>
+</project>

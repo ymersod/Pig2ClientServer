@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Pig2ClientServer.iml" filepath="$PROJECT_DIR$/.idea/Pig2ClientServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/PigClient/PigClient.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/PigClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/PigServer/PigServer.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/PigServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/RealPigSpringGrpc.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/RealPigSpringGrpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/proto-module/proto-module.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/proto-module.iml" />
+    </modules>
+  </component>
+</project>
