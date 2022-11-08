@@ -18,7 +18,7 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
 
         ArrayList<PigObject> pigs = new ArrayList<>();
 
-
+        /*
         PigObject pig = PigObject.newBuilder()
             .setId("1")
             .setWeight(30.10)
@@ -26,6 +26,8 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
 
         pigs.add(pig);
 
+            Dette er Database Magi
+         */
         PigsResponse response = PigsResponse.newBuilder()
             .addAllPigs(pigs)
             .build();
@@ -35,9 +37,10 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
     }
 
     @Override
-    public void findProductsFromPig(ProductRequests request, StreamObserver<ProductResponse>  responseObserver)
+    public void findProductsFromPigs(ProductRequest request, StreamObserver<ProductResponse>  responseObserver)
     {
-        String pigId = request.get
+        String pigId = request.getPigId();
+
     }
 
     @Override
