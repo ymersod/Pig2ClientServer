@@ -3,17 +3,17 @@ package com.piggyfarm.grpc.slaughterhouse;
 import com.piggyfarm.grpc.model.Part;
 import com.piggyfarm.grpc.model.Pig;
 import com.piggyfarm.grpc.model.PigPart;
+import com.piggyfarm.grpc.model.Tray;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class CuttingStation implements Runnable {
-	private List<Pig> pigs;
+	private final List<Pig> pigs;
+	private final HashMap<PigPart, Tray> trays;
 
 	public CuttingStation() {
-		this.pigs = new ArrayList<>();
+		pigs = new ArrayList<>();
+		trays = new HashMap<>();
 	}
 
 	@Override
@@ -21,18 +21,17 @@ public class CuttingStation implements Runnable {
 		while (true) {
 			if (!pigs.isEmpty()) {
 				Pig pig = pigs.remove(0);
-				System.out.println("Cutting pig " + pig.getId());
-
-				sleep(1000);
+				List<Part> parts = cutPig(pig);
+				parts.forEach(this::addPartToTray);
 			}
 		}
 	}
 
 	public void addPig(Pig pig) {
-		this.pigs.add(pig);
+		pigs.add(pig);
 	}
 
-	private HashMap<PigPart, Part> cutPig(Pig pig) {
+	private List<Part> cutPig(Pig pig) {
 		// store some values
 		int pigId = pig.getId();
 		double pigWeight = pig.getWeight();
@@ -56,20 +55,36 @@ public class CuttingStation implements Runnable {
 
 		Part bottom = new Part(bottomWeight, pigId, PigPart.BOTTOM);
 
-		// store the parts in a list
-		List<Part> parts = Arrays.asList(
-				head,
-				ribs1,
-				ribs2,
-				leg1,
-				leg2,
-				leg3,
-				leg4,
-				bottom
-		);
-
 		System.out.println("Cutting pig " + pigId);
 		sleep(5000);
+
+		return Arrays.asList(head, ribs1, ribs2, leg1, leg2, leg3, leg4, bottom);
+	}
+
+	private void addPartToTray(Part part) {
+		System.out.println("Adding part: " + part.getId() + ", to tray of type: " + part.getPigPart());
+		sleep(1000);
+
+		try {
+			Tray tray = trays.get(part.getPigPart());
+			tray.addPart(part);
+		} catch (RuntimeException e) {
+			Tray oldTray = replaceTray(part.getPigPart());
+			sendTray(oldTray);
+		}
+	}
+
+	private void sendTray(Tray tray) {
+		// send to next station
+		System.out.println("Sending tray " + tray.getId() + " to next station");
+		sleep(1000);
+	}
+
+	// returns old tray
+	private Tray replaceTray(PigPart pigPart) {
+		Tray tray = trays.remove(pigPart);
+		trays.put(pigPart, new Tray(pigPart));
+		return tray;
 	}
 
 	private void sleep(long millis) {
