@@ -17,7 +17,8 @@ public class PigFarm implements Runnable {
 
     @Override
     public void run() {
-        double maxWeight = 30.0;
+        double weightRange = 30.0;
+        double minWeight = 90.0;
         while(true)
         {
             try {
@@ -26,7 +27,7 @@ public class PigFarm implements Runnable {
                 throw new RuntimeException(e);
             }
 
-            Pig pig = new Pig(Math.random()* maxWeight+ 90.0);
+            Pig pig = new Pig(Math.random() * weightRange+ minWeight);
             arrivalStation.registerPig(pig);
         }
     }
