@@ -7,18 +7,16 @@ public class Tray
   private int id;
   private List<Part> parts; //update
   private double weight;
-  private enum typeOfTray {
-    Head,
-    Leg,
-    Bottom,
-    Rib
-  }
 
-  public Tray(int id, List<Part> parts, double weight)
+
+  private final PigPart pigPart;
+
+  public Tray(int id, List<Part> parts, double weight, PigPart pigPart)
   {
     this.id = id;
     this.parts = parts;
     this.weight = weight;
+    this.pigPart = pigPart;
   }
 
   public int getId()
@@ -49,5 +47,10 @@ public class Tray
   public void setWeight(double weight)
   {
     this.weight = weight;
+  }
+
+  public PigPart getPigPart()
+  {
+    return pigPart;
   }
 }
