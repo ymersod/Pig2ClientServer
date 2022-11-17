@@ -13,9 +13,9 @@ public class Tray
   private double weight;
 
 
-  private final PigPart pigPart;
+  private final PigPartType pigPart;
 
-  public Tray(PigPart pigPart)
+  public Tray(PigPartType pigPart)
   {
     this.pigPart = pigPart;
 
@@ -24,7 +24,7 @@ public class Tray
     weight = 0;
   }
 
-  public Tray(String id, List<Part> parts, double weight, PigPart pigPart)
+  public Tray(String id, List<Part> parts, double weight, PigPartType pigPart)
   {
     this.id = id;
     this.parts = parts;
@@ -73,7 +73,7 @@ public class Tray
     this.weight = weight;
   }
 
-  public PigPart getPigPart()
+  public PigPartType getPigPart()
   {
     return pigPart;
   }

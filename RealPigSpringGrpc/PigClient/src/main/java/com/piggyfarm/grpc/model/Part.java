@@ -6,21 +6,21 @@ public class Part
   private double weight;
   private int pigId;
 
-  private PigPart pigPart;
+  private PigPartType partType;
 
-  public Part(double weight, int pigId, PigPart pigPart)
+  public Part(double weight, int pigId, PigPartType partType)
   {
     this.weight = weight;
     this.pigId = pigId;
-    this.pigPart = pigPart;
+    this.partType = partType;
   }
 
-  public Part(int id, double weight, int pigId, PigPart pigPart)
+  public Part(int id, double weight, int pigId, PigPartType partType)
   {
     this.id = id;
     this.weight = weight;
     this.pigId = pigId;
-    this.pigPart = pigPart;
+    this.partType = partType;
   }
 
   public int getId()
@@ -53,11 +53,11 @@ public class Part
     this.pigId = pigId;
   }
 
-  public PigPart getPigPart() {
-    return pigPart;
+  public PigPartType getPartType() {
+    return partType;
   }
 
-  public void setPigPart(PigPart pigPart) {
-    this.pigPart = pigPart;
+  public void setPartType(PigPartType partType) {
+    this.partType = partType;
   }
 }

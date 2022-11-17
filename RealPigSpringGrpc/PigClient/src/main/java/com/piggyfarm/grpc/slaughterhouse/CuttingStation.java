@@ -2,7 +2,7 @@ package com.piggyfarm.grpc.slaughterhouse;
 
 import com.piggyfarm.grpc.model.Part;
 import com.piggyfarm.grpc.model.Pig;
-import com.piggyfarm.grpc.model.PigPart;
+import com.piggyfarm.grpc.model.PigPartType;
 import com.piggyfarm.grpc.model.Tray;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +11,12 @@ import java.util.*;
 @Service
 public class CuttingStation implements Runnable {
 	private final List<Pig> pigs;
-	private final HashMap<PigPart, Tray> trays;
+	private final HashMap<PigPartType, Tray> trays;
 
 	public CuttingStation() {
 		pigs = new ArrayList<>();
 		trays = new HashMap<>();
-		
+
 		run();
 	}
 
@@ -47,17 +47,17 @@ public class CuttingStation implements Runnable {
 		double bottomWeight = pigWeight * 0.50;
 
 		// create the parts
-		Part head = new Part(headWeight, pigId, PigPart.HEAD);
+		Part head = new Part(headWeight, pigId, PigPartType.HEAD);
 
-		Part ribs1 = new Part(ribsWeight, pigId, PigPart.RIBS);
-		Part ribs2 = new Part(ribsWeight, pigId, PigPart.RIBS);
+		Part ribs1 = new Part(ribsWeight, pigId, PigPartType.RIBS);
+		Part ribs2 = new Part(ribsWeight, pigId, PigPartType.RIBS);
 
-		Part leg1 = new Part(legWeight, pigId, PigPart.LEG);
-		Part leg2 = new Part(legWeight, pigId, PigPart.LEG);
-		Part leg3 = new Part(legWeight, pigId, PigPart.LEG);
-		Part leg4 = new Part(legWeight, pigId, PigPart.LEG);
+		Part leg1 = new Part(legWeight, pigId, PigPartType.LEG);
+		Part leg2 = new Part(legWeight, pigId, PigPartType.LEG);
+		Part leg3 = new Part(legWeight, pigId, PigPartType.LEG);
+		Part leg4 = new Part(legWeight, pigId, PigPartType.LEG);
 
-		Part bottom = new Part(bottomWeight, pigId, PigPart.BOTTOM);
+		Part bottom = new Part(bottomWeight, pigId, PigPartType.BOTTOM);
 
 		System.out.println("Cutting pig " + pigId);
 		sleep(5000);
@@ -66,14 +66,14 @@ public class CuttingStation implements Runnable {
 	}
 
 	private void addPartToTray(Part part) {
-		System.out.println("Adding part: " + part.getId() + ", to tray of type: " + part.getPigPart());
+		System.out.println("Adding part: " + part.getId() + ", to tray of type: " + part.getPartType());
 		sleep(1000);
 
 		try {
-			Tray tray = trays.get(part.getPigPart());
+			Tray tray = trays.get(part.getPartType());
 			tray.addPart(part);
 		} catch (RuntimeException e) {
-			Tray oldTray = replaceTray(part.getPigPart());
+			Tray oldTray = replaceTray(part.getPartType());
 			sendTray(oldTray);
 		}
 	}
@@ -85,7 +85,7 @@ public class CuttingStation implements Runnable {
 	}
 
 	// returns old tray
-	private Tray replaceTray(PigPart pigPart) {
+	private Tray replaceTray(PigPartType pigPart) {
 		Tray tray = trays.remove(pigPart);
 		trays.put(pigPart, new Tray(pigPart));
 		return tray;

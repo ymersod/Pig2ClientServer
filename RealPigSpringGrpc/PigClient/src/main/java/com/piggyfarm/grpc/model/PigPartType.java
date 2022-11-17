@@ -1,6 +1,6 @@
 package com.piggyfarm.grpc.model;
 
-public enum PigPart {
+public enum PigPartType {
 	HEAD,
 	RIBS,
 	LEG,
