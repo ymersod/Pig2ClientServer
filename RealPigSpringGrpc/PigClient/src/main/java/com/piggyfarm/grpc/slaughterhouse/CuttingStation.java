@@ -3,12 +3,14 @@ package com.piggyfarm.grpc.slaughterhouse;
 import com.piggyfarm.grpc.model.Part;
 import com.piggyfarm.grpc.model.Pig;
 import com.piggyfarm.grpc.model.PigPart;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+@Service
 public class CuttingStation implements Runnable {
 	private List<Pig> pigs;
 

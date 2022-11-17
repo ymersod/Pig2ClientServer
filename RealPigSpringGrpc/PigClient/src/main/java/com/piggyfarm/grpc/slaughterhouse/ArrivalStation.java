@@ -13,11 +13,8 @@ public class ArrivalStation {
     @Autowired
     private PigService pigService;
 
-    /*
     @Autowired
     private CuttingStation cuttingStation;
-
-     */
 
     public void registerPig(Pig pig) {
         Pig registeredPig = pigService.registerPig(pig);
@@ -26,6 +23,6 @@ public class ArrivalStation {
 
     public void sendToCuttingStation(Pig registeredPig)
     {
-        //cuttingStation.??
+        cuttingStation.addPig(registeredPig);
     }
 }
