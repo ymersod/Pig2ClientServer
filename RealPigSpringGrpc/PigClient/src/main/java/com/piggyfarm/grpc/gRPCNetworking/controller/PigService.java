@@ -65,5 +65,25 @@ public class PigService {
         }
     }
 
+    public Pig registerPig(final Pig pig)
+    {
+        try {
+            PigObject registeredPig = this.pigServiceBlockingStub.registerPig(PigToBeRegistered.newBuilder()
+                    .setWeight(pig.getWeight())
+                    .build());
+
+
+            //Conversion from gRPC object to domain object
+            Pig piggy = new Pig(registeredPig.getId(),registeredPig.getWeight());
+
+            return piggy;
+        }
+        catch (StatusRuntimeException e)
+        {
+            System.out.println(e.getStatus().getCode());
+            return null;
+        }
+    }
+
 
 }
