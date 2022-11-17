@@ -66,9 +66,6 @@ public class CuttingStation implements Runnable {
 	}
 
 	private void addPartToTray(Part part) {
-		System.out.println("Adding part: " + part.getId() + ", to tray of type: " + part.getPartType());
-		sleep(1000);
-
 		try {
 			Tray tray = trays.get(part.getPartType());
 			tray.addPart(part);
@@ -76,9 +73,15 @@ public class CuttingStation implements Runnable {
 			Tray oldTray = replaceTray(part.getPartType());
 			sendTray(oldTray);
 		}
+
+		System.out.println("Adding part: " + part.getId() + ", to tray of type: " + part.getPartType());
+		sleep(1000);
 	}
 
 	private void sendTray(Tray tray) {
+		// send tray to database
+		// Tray trayFromDB = db.getTray;
+
 		// send to next station
 		System.out.println("Sending tray " + tray.getId() + " to next station");
 		sleep(1000);
