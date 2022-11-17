@@ -40,6 +40,7 @@ public class Tray
       throw new RuntimeException("Tray is full");
     }
 
+    weight += part.getWeight();
     parts.add(part);
   }
 
@@ -58,19 +59,9 @@ public class Tray
     return parts;
   }
 
-  public void setParts(List<Part> parts)
-  {
-    this.parts = parts;
-  }
-
   public double getWeight()
   {
     return weight;
-  }
-
-  public void setWeight(double weight)
-  {
-    this.weight = weight;
   }
 
   public PigPartType getPigPart()
