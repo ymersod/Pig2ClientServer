@@ -10,6 +10,11 @@ public class PigFarm implements Runnable {
     @Autowired
     private ArrivalStation arrivalStation;
 
+    public PigFarm()
+    {
+        run();
+    }
+
     @Override
     public void run() {
         double maxWeight = 50.0;
