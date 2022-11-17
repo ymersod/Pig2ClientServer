@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class PigService {
 
     @GrpcClient("pig-service")
-    private PigServiceGrpc.PigServiceBlockingStub pigServiceBlockingStub;
+    private com.pigfarm.pig.PigServiceGrpc.PigServiceBlockingStub pigServiceBlockingStub;
 
-    public ArrayList<Pig> findPigsFromProduct(final String productId)
+    public ArrayList<Pig> findPigsFromProduct(final int productId)
     {
         try{
             final PigsResponse response = this.pigServiceBlockingStub.findPigsFromProduct(PigsRequest.newBuilder()
@@ -35,7 +35,7 @@ public class PigService {
         }
     }
 
-    public ArrayList<Product> findProductFromPig(final String pigsId){
+    public ArrayList<Product> findProductFromPig(final int pigsId){
         try{
             final ProductResponse response = this.pigServiceBlockingStub.findProductsFromPigs(ProductRequest.newBuilder()
                 .setPigId(pigsId)

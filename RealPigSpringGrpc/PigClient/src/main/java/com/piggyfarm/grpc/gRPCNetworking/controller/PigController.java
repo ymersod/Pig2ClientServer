@@ -15,16 +15,18 @@ public class PigController {
     private PigService pigService;
 
     @GetMapping("/pigs" )
-    public ArrayList<Pig> getPigsFromProduct(@RequestParam String productId){
+    public ArrayList<Pig> getPigsFromProduct(@RequestParam int productId){
         return pigService.findPigsFromProduct(productId);
     }
 
     @GetMapping("/products")
-    public ArrayList<Product> getProductsFromPigs(@RequestParam String pigId){
+    public ArrayList<Product> getProductsFromPigs(@RequestParam int pigId){
         return pigService.findProductFromPig(pigId);
     }
+
     @RequestMapping("/piggy")
     public String printMessage(@RequestParam(defaultValue = "Michael") String name, @RequestParam(defaultValue = "Poop") String lastname) {
         return pigService.sendMessage(name,lastname);
     }
+
 }
