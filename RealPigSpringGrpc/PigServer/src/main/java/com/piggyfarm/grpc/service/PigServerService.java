@@ -4,7 +4,6 @@ import com.pigfarm.pig.*;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -22,7 +21,7 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
     @Override
     public void findPigsFromProduct(PigsRequest request, StreamObserver<PigsResponse> responseObserver)
     {
-        int productId = Integer.parseInt(request.getProductId());
+        int productId = request.getProductId();
 
         List<PigObject> pigs = dataBaseAccess.getPigsFromProduct(productId);
 
@@ -37,7 +36,7 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
     @Override
     public void findProductsFromPigs(ProductRequest request, StreamObserver<ProductResponse>  responseObserver)
     {
-        int pigId = Integer.parseInt(request.getPigId());
+        int pigId = request.getPigId();
         List<ProductObject> products = dataBaseAccess.getProductFromPigs(pigId); //Indeholder products som er fundet via database magic
 
         ProductResponse response = ProductResponse.newBuilder()

@@ -1,4 +1,4 @@
-package com.piggyfarm.grpc.service;
+package com.piggyfarm.grpc.gRPCNetworking.controller;
 
 import com.pigfarm.pig.*;
 
@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class PigService {
 
     @GrpcClient("pig-service")
-    private PigServiceGrpc.PigServiceBlockingStub pigServiceBlockingStub;
+    private com.pigfarm.pig.PigServiceGrpc.PigServiceBlockingStub pigServiceBlockingStub;
 
-    public ArrayList<Pig> findPigsFromProduct(final String productId)
+    public ArrayList<Pig> findPigsFromProduct(final int productId)
     {
         try{
             final PigsResponse response = this.pigServiceBlockingStub.findPigsFromProduct(PigsRequest.newBuilder()
@@ -35,7 +35,7 @@ public class PigService {
         }
     }
 
-    public ArrayList<Product> findProductFromPig(final String pigsId){
+    public ArrayList<Product> findProductFromPig(final int pigsId){
         try{
             final ProductResponse response = this.pigServiceBlockingStub.findProductsFromPigs(ProductRequest.newBuilder()
                 .setPigId(pigsId)
@@ -62,6 +62,26 @@ public class PigService {
             return response.getGreeting();
         } catch (final StatusRuntimeException e) {
             return "FAILED with " + e.getStatus().getCode().name();
+        }
+    }
+
+    public Pig registerPig(final Pig pig)
+    {
+        try {
+            PigObject registeredPig = this.pigServiceBlockingStub.registerPig(PigToBeRegistered.newBuilder()
+                    .setWeight(pig.getWeight())
+                    .build());
+
+
+            //Conversion from gRPC object to domain object
+            Pig piggy = new Pig(registeredPig.getId(),registeredPig.getWeight());
+
+            return piggy;
+        }
+        catch (StatusRuntimeException e)
+        {
+            System.out.println(e.getStatus().getCode());
+            return null;
         }
     }
 

@@ -40,7 +40,7 @@ public class DataBaseAccess {
                 while (pigInProductResult.next())
                 {
                     PigObject obj = PigObject.newBuilder()
-                            .setId(pigInProductResult.getString("id"))
+                            .setId(Integer.parseInt(pigInProductResult.getString("id")))
                             .setWeight(pigInProductResult.getDouble("weight"))
                             .build();
                     pigs.add(obj);
@@ -69,7 +69,7 @@ public class DataBaseAccess {
                 while (productFromPigResult.next())
                 {
                     ProductObject obj = ProductObject.newBuilder()
-                            .setId(productFromPigResult.getString("id"))
+                            .setId(Integer.parseInt(productFromPigResult.getString("id")))
                             .setWeight(Double.parseDouble(productFromPigResult.getString("weight")))
                             .build();
                     products.add(obj);

@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22fb9467-3b28-443c-a1ad-7f8fc218fcce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/TempPackagething.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/TempPigPart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/TempPigParts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/DataBaseAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/DataBaseAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/PackingStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/PackingStation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,13 +26,6 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="2HG15QXuBuRekTywdCI7ZLKKRma" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -46,25 +34,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Skole/SEM3/SDJ3/Pig2ClientServer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "show.run.dashboard.notification": "false",
-    "spring.configuration.checksum": "a1319cfbb4f7cf3db3858c77a6e8f704"
-  }
-}]]></component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -72,20 +41,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test">
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.piggyfarm.grpc.service.Test" />
-      <module name="PigServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.piggyfarm.grpc.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="PigClientServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="PigClient" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.piggyfarm.grpc.PigClientServiceApplication" />
@@ -113,18 +69,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.Test" />
-      <item itemvalue="Spring Boot.PigClientServiceApplication" />
-      <item itemvalue="Spring Boot.PigServerServiceApplication" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Spring Boot.PigServerServiceApplication" />
-        <item itemvalue="Spring Boot.PigClientServiceApplication" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -153,5 +97,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

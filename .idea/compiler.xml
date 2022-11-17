@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="proto-module" />
-        <module name="PigServer" />
         <module name="PigClient" />
+        <module name="PigServer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

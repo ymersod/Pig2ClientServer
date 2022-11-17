@@ -2,21 +2,26 @@ package com.piggyfarm.grpc.model;
 
 public class Pig
 {
-  private String id;
+  private int id;
   private double weight;
 
-  public Pig(String id, double weight)
+  public Pig(int id, double weight)
   {
     this.id = id;
     this.weight = weight;
   }
 
-  public String getId()
+  public Pig(double weight)
+  {
+
+  }
+
+  public int getId()
   {
     return id;
   }
 
-  public void setId(String id)
+  public void setId(int id)
   {
     this.id = id;
   }
