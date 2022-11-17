@@ -12,8 +12,8 @@ public class PackingStation implements Runnable
   private List<Tray> trays;
 
   //Cycle algorithm
-  private List<PigPart> pigPartsList = List.of(PigPart.values());
-  private PigPart partToLookfor;
+  private List<PigPartType> pigPartsList = List.of(PigPartType.values());
+  private PigPartType partToLookfor;
   private int count = 0;
 
   //Packages
@@ -75,20 +75,20 @@ public class PackingStation implements Runnable
 
   private void addToPackage(Tray tray)
   {
-    if (partToLookfor == PigPart.HEAD && headAndBottom.getHead() == null)
+    if (partToLookfor == PigPartType.HEAD && headAndBottom.getHead() == null)
     {
       headAndBottom.setHead(tray.getParts().remove(0));
 
     }
-    if (partToLookfor == PigPart.BOTTOM && headAndBottom.getBottom() == null)
+    if (partToLookfor == PigPartType.BOTTOM && headAndBottom.getBottom() == null)
     {
       headAndBottom.setBottom(tray.getParts().remove(0));
     }
-    if (partToLookfor == PigPart.LEG && ribsAndLegs.getLegs() == null)
+    if (partToLookfor == PigPartType.LEG && ribsAndLegs.getLegs() == null)
     {
       ribsAndLegs.setLegs(tray.getParts().remove(0));
     }
-    if (partToLookfor == PigPart.RIBS && ribsAndLegs.getRibs() == null)
+    if (partToLookfor == PigPartType.RIBS && ribsAndLegs.getRibs() == null)
     {
       ribsAndLegs.setRibs(tray.getParts().remove(0));
     }
