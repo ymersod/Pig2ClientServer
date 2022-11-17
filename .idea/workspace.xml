@@ -34,11 +34,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
-  }
-}]]></component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -46,7 +41,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.PigClientServiceApplication">
+  <component name="RunManager">
     <configuration name="PigClientServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="PigClient" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.piggyfarm.grpc.PigClientServiceApplication" />
@@ -74,10 +69,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Spring Boot.PigClientServiceApplication" />
-      <item itemvalue="Spring Boot.PigServerServiceApplication" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
