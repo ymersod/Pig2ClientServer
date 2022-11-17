@@ -1,17 +1,30 @@
 package com.piggyfarm.grpc.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Tray
 {
-  private int id;
+  private static final int MAX_WEIGHT = 100;
+
+  private String id;
   private List<Part> parts; //update
   private double weight;
 
 
   private final PigPart pigPart;
 
-  public Tray(int id, List<Part> parts, double weight, PigPart pigPart)
+  public Tray(PigPart pigPart)
+  {
+    this.pigPart = pigPart;
+
+    id = UUID.randomUUID().toString();
+    parts = new ArrayList<>();
+    weight = 0;
+  }
+
+  public Tray(String id, List<Part> parts, double weight, PigPart pigPart)
   {
     this.id = id;
     this.parts = parts;
@@ -19,12 +32,23 @@ public class Tray
     this.pigPart = pigPart;
   }
 
-  public int getId()
+  public void addPart(Part part) throws RuntimeException
+  {
+    boolean isGonnaBeFull = (weight + part.getWeight()) > MAX_WEIGHT;
+
+    if (isGonnaBeFull) {
+      throw new RuntimeException("Tray is full");
+    }
+
+    parts.add(part);
+  }
+
+  public String getId()
   {
     return id;
   }
 
-  public void setId(int id)
+  public void setId(String id)
   {
     this.id = id;
   }
