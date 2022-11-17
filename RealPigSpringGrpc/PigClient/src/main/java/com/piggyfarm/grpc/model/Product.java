@@ -1,22 +1,32 @@
 package com.piggyfarm.grpc.model;
 
+import java.util.List;
+
 public class Product
 {
-  private String id;
+  private int id;
   private double weight;
+  private List<Part> parts;
 
-  public Product(String id, double weight)
+  public Product(int id, double weight, List<Part> parts)
+  {
+    this.id = id;
+    this.weight = weight;
+    this.parts = parts;
+  }
+
+  public Product(int id, double weight)
   {
     this.id = id;
     this.weight = weight;
   }
 
-  public String getId()
+  public int getId()
   {
     return id;
   }
 
-  public void setId(String id)
+  public void setId(int id)
   {
     this.id = id;
   }
@@ -29,5 +39,15 @@ public class Product
   public void setWeight(double weight)
   {
     this.weight = weight;
+  }
+
+  public List<Part> getParts()
+  {
+    return parts;
+  }
+
+  public void setParts(List<Part> parts)
+  {
+    this.parts = parts;
   }
 }

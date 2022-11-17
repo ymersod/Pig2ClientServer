@@ -16,7 +16,7 @@ message HelloResponse {
 }
 
 message PigsRequest {
-  string productId = 1;
+  int32 productId = 1;
 }
 
 message PigsResponse {
@@ -24,12 +24,12 @@ message PigsResponse {
 }
 
 message PigObject {
-  string id = 1;
+  int32 id = 1;
   double weight = 2;
 }
 
 message ProductRequest {
-  string pigId = 1;
+  int32 pigId = 1;
 }
 
 message ProductResponse {
@@ -37,7 +37,7 @@ message ProductResponse {
 }
 
 message ProductObject {
-  string id = 1;
+  int32 id = 1;
   double weight = 2;
 }
 

@@ -1,14 +1,16 @@
 package com.piggyfarm.grpc.model;
 
-public class Pig
+public class Part
 {
   private int id;
   private double weight;
+  private int pigId;
 
-  public Pig(int id, double weight)
+  public Part(int id, double weight, int pigId)
   {
     this.id = id;
     this.weight = weight;
+    this.pigId = pigId;
   }
 
   public int getId()
@@ -29,5 +31,15 @@ public class Pig
   public void setWeight(double weight)
   {
     this.weight = weight;
+  }
+
+  public int getPigId()
+  {
+    return pigId;
+  }
+
+  public void setPigId(int pigId)
+  {
+    this.pigId = pigId;
   }
 }
