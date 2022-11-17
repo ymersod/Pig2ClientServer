@@ -1,15 +1,12 @@
 package com.piggyfarm.grpc.slaughterhouse;
 
-
 import com.piggyfarm.grpc.gRPCNetworking.controller.PigService;
 import com.piggyfarm.grpc.model.Pig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class ArrivalStation {
-
     @Autowired
     private PigService pigService;
 
