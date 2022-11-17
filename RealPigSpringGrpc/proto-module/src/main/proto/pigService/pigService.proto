@@ -41,9 +41,13 @@ message ProductObject {
   double weight = 2;
 }
 
+message PigToBeRegistered {
+  double weight = 1;
+}
 
 service PigService {
   rpc SayHello(HelloRequest) returns (HelloResponse);
   rpc FindPigsFromProduct(PigsRequest) returns (PigsResponse);
   rpc FindProductsFromPigs(ProductRequest) returns (ProductResponse);
+  rpc RegisterPig(PigToBeRegistered) returns (PigObject);
 }

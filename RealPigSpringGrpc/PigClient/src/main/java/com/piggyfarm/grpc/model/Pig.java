@@ -11,6 +11,11 @@ public class Pig
     this.weight = weight;
   }
 
+  public Pig(double weight)
+  {
+
+  }
+
   public int getId()
   {
     return id;

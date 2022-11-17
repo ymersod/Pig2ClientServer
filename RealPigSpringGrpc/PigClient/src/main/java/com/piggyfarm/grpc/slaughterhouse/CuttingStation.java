@@ -7,6 +7,7 @@ import com.piggyfarm.grpc.model.Tray;
 
 import java.util.*;
 
+@Service
 public class CuttingStation implements Runnable {
 	private final List<Pig> pigs;
 	private final HashMap<PigPart, Tray> trays;
