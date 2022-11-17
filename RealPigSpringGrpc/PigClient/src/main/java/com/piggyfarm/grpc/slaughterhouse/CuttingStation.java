@@ -16,6 +16,8 @@ public class CuttingStation implements Runnable {
 	public CuttingStation() {
 		pigs = new ArrayList<>();
 		trays = new HashMap<>();
+		
+		run();
 	}
 
 	@Override
