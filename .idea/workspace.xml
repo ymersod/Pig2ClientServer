@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22fb9467-3b28-443c-a1ad-7f8fc218fcce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Part.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Tray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/gRPCNetworking/controller/PigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/gRPCNetworking/controller/PigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/gRPCNetworking/controller/PigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/gRPCNetworking/controller/PigService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Pig.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Pig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/DataBaseAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/DataBaseAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/PigServerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/PigServerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/src/main/proto/pigService/pigService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/src/main/proto/pigService/pigService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +47,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.PigClientServiceApplication">
     <configuration name="PigClientServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="PigClient" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.piggyfarm.grpc.PigClientServiceApplication" />
@@ -87,6 +75,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.PigClientServiceApplication" />
+      <item itemvalue="Spring Boot.PigServerServiceApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -114,6 +106,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
