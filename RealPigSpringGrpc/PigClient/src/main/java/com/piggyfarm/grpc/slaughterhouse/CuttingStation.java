@@ -4,6 +4,7 @@ import com.piggyfarm.grpc.model.Part;
 import com.piggyfarm.grpc.model.Pig;
 import com.piggyfarm.grpc.model.PigPart;
 import com.piggyfarm.grpc.model.Tray;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
