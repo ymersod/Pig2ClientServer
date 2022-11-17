@@ -21,6 +21,11 @@ public class Product
     this.weight = weight;
   }
 
+  public Product()
+  {
+
+  }
+
   public int getId()
   {
     return id;
