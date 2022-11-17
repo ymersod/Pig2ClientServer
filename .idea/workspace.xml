@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22fb9467-3b28-443c-a1ad-7f8fc218fcce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/DataBaseAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/TempPackagething.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/TempPigPart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/TempPigParts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/PigServerServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/PigServerServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/PigServerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/PigServerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/DataBaseAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/DataBaseAccess.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -55,13 +56,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Skole/SEM3/SDJ3/Pig2",
+    "last_opened_file_path": "D:/Skole/SEM3/SDJ3/Pig2ClientServer",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "show.run.dashboard.notification": "false",
-    "spring.configuration.checksum": "69dec2b4b83812b9dd806418e50569b6"
+    "spring.configuration.checksum": "a1319cfbb4f7cf3db3858c77a6e8f704"
   }
 }]]></component>
   <component name="RunDashboard">
@@ -71,7 +72,20 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.PigServerServiceApplication">
+  <component name="RunManager" selected="Application.Test">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.piggyfarm.grpc.service.Test" />
+      <module name="PigServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.piggyfarm.grpc.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PigClientServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="PigClient" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.piggyfarm.grpc.PigClientServiceApplication" />
@@ -100,11 +114,13 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Test" />
       <item itemvalue="Spring Boot.PigClientServiceApplication" />
       <item itemvalue="Spring Boot.PigServerServiceApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test" />
         <item itemvalue="Spring Boot.PigServerServiceApplication" />
         <item itemvalue="Spring Boot.PigClientServiceApplication" />
       </list>
@@ -120,6 +136,7 @@
       <updated>1667896422899</updated>
       <workItem from="1667896424583" duration="953000" />
       <workItem from="1667901565932" duration="3450000" />
+      <workItem from="1668685046496" duration="8784000" />
     </task>
     <servers />
   </component>

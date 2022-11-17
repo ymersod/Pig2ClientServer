@@ -80,4 +80,116 @@ public class DataBaseAccess {
         }
         return products;
     }
+
+    public PigObject registerPig(double weight)
+    {
+        Connection c = Connect();
+        String statement = "INSERT INTO \"PigReg\".pig(weight)\n values (" + weight +") RETURNING *;";
+        PigObject pig = null;
+        try {
+            PreparedStatement getPigsInProduct = c.prepareStatement(statement);
+            ResultSet productFromPigResult = getPigsInProduct.executeQuery();
+            if (productFromPigResult != null)
+                while (productFromPigResult.next())
+                {
+                    pig = PigObject.newBuilder()
+                            .setId(productFromPigResult.getString("id"))
+                            .setWeight(Double.parseDouble(productFromPigResult.getString("weight")))
+                            .build();
+                }
+            c.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return pig;
+    }
+
+    public PigObject registerPigParts(TempPigParts temp)
+    {
+        Connection c = Connect();
+        String statement = "insert into \"PigReg\".part (weight, pigid, trayid, name) values ";
+
+        int i = 1;
+        for ( TempPigPart part:temp.getParts()) {
+            statement += "(" + part.getWeight() + ", " + part.getPigId() + ", '"
+                    + temp.getTrayId() + "', '" + part.getName() + "')";
+            if(i++ != temp.getParts().size()){
+                System.out.println("yo");
+                statement += ", ";
+            }
+        }
+        statement += " RETURNING *;";
+        System.out.println(statement);
+        PigObject pig = null;
+        try {
+            PreparedStatement getPigsInProduct = c.prepareStatement(statement);
+            ResultSet productFromPigResult = getPigsInProduct.executeQuery();
+            if (productFromPigResult != null)
+                while (productFromPigResult.next())
+                {
+                    System.out.println(productFromPigResult.getString("id"));
+                    /*pig = PigObject.newBuilder()
+                            .setId(productFromPigResult.getString("id"))
+                            .setWeight(Double.parseDouble(productFromPigResult.getString("weight")))
+                            .build();*/
+                }
+            c.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return pig;
+    }
+
+    public PigObject registerProduct(TempPackagething temp)
+    {
+        Connection c = Connect();
+        String statement = "INSERT INTO \"PigReg\".product (name) Values ('"+ temp.getName() +"') RETURNING *;";
+
+        int packageId;
+
+        try {
+            PreparedStatement getPigsInProduct = c.prepareStatement(statement);
+            ResultSet productFromPigResult = getPigsInProduct.executeQuery();
+            productFromPigResult.next();
+            packageId = productFromPigResult.getInt("id");
+            System.out.println(packageId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        statement = "UPDATE \"PigReg\".part SET productid = "+packageId+" where id in (";
+        int i = 1;
+
+        for ( TempPigPart part:temp.getParts()) {
+            statement += part.getId();
+            if(i++ != temp.getParts().size())
+                statement += ", ";
+        }
+
+        statement += ") RETURNING *;";
+
+        PigObject pig = null;
+        try {
+            System.out.println("got here 5");
+
+            PreparedStatement getPigsInProduct = c.prepareStatement(statement);
+            ResultSet productFromPigResult = getPigsInProduct.executeQuery();
+            if (productFromPigResult != null)
+                while (productFromPigResult.next())
+                {
+                    System.out.println("got here 3");
+
+                    System.out.println(productFromPigResult.getString("productid"));
+                    /*pig = PigObject.newBuilder()
+                            .setId(productFromPigResult.getString("id"))
+                            .setWeight(Double.parseDouble(productFromPigResult.getString("weight")))
+                            .build();*/
+                }
+            c.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return pig;
+    }
 }
