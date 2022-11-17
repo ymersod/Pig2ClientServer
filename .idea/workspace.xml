@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22fb9467-3b28-443c-a1ad-7f8fc218fcce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/ArrivalStation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/PigFarm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/gRPCNetworking/controller/PigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/gRPCNetworking/controller/PigService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Pig.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Pig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/src/main/proto/pigService/pigService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/src/main/proto/pigService/pigService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/PigFarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/PigFarm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
