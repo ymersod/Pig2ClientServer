@@ -8,13 +8,19 @@ public class Part
 
   private final PigPartType pigpart;
 
-  public Part(int id, double weight, int pigId, PigPartType pigpart)
+  public Part(double weight, int pigId, PigPartType partType) {
+    this.weight = weight;
+    this.pigId = pigId;
+    this.pigpart = partType;
+  }
+
+  public Part(int id, double weight, int pigId, PigPartType partType)
 
   {
     this.id = id;
     this.weight = weight;
     this.pigId = pigId;
-    this.pigpart = pigpart;
+    this.pigpart = partType;
   }
   public int getId()
   {
