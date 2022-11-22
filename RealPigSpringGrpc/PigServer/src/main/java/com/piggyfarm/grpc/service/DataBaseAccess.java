@@ -93,7 +93,7 @@ public class DataBaseAccess {
                 while (productFromPigResult.next())
                 {
                     pig = PigObject.newBuilder()
-                            .setId(productFromPigResult.getString("id"))
+                            .setId(productFromPigResult.getInt("id"))
                             .setWeight(Double.parseDouble(productFromPigResult.getString("weight")))
                             .build();
                 }
@@ -127,7 +127,7 @@ public class DataBaseAccess {
             if (productFromPigResult != null)
                 while (productFromPigResult.next())
                 {
-                    System.out.println(productFromPigResult.getString("id"));
+                    System.out.println(productFromPigResult.getInt("id"));
                     /*pig = PigObject.newBuilder()
                             .setId(productFromPigResult.getString("id"))
                             .setWeight(Double.parseDouble(productFromPigResult.getString("weight")))
@@ -179,7 +179,7 @@ public class DataBaseAccess {
                 {
                     System.out.println("got here 3");
 
-                    System.out.println(productFromPigResult.getString("productid"));
+                    System.out.println(productFromPigResult.getInt("productid"));
                     /*pig = PigObject.newBuilder()
                             .setId(productFromPigResult.getString("id"))
                             .setWeight(Double.parseDouble(productFromPigResult.getString("weight")))

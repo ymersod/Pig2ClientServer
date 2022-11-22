@@ -1,7 +1,9 @@
 package com.piggyfarm.grpc.slaughterhouse;
 
 import com.piggyfarm.grpc.model.Product;
+import org.springframework.stereotype.Service;
 
+@Service
 public class Shop
 {
   //I have an agent
@@ -13,6 +15,6 @@ public class Shop
 
 
 
-  //I want to klage about a pakke
+  //I want to klage about a pakke metode
 
 }

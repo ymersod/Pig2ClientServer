@@ -1,12 +1,13 @@
 package com.piggyfarm.grpc.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Product
 {
   private int id;
   private double weight;
-  private List<Part> parts;
+  private List<Part> parts = new ArrayList<>();
 
   public Product(int id, double weight, List<Part> parts)
   {

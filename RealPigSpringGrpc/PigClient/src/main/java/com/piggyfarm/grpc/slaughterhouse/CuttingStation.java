@@ -4,14 +4,24 @@ import com.piggyfarm.grpc.model.Part;
 import com.piggyfarm.grpc.model.Pig;
 import com.piggyfarm.grpc.model.PigPartType;
 import com.piggyfarm.grpc.model.Tray;
+import com.piggyfarm.grpc.service.PigService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
 public class CuttingStation implements Runnable {
+
+	@Autowired
+	private PigService pigService;
+
+	@Autowired
+	private PackingStation packingStation;
 	private final List<Pig> pigs;
 	private final HashMap<PigPartType, Tray> trays;
+
+
 
 	public CuttingStation() {
 		pigs = new ArrayList<>();
@@ -79,10 +89,9 @@ public class CuttingStation implements Runnable {
 	}
 
 	private void sendTray(Tray tray) {
-		// send tray to database
-		// Tray trayFromDB = db.getTray;
+		Tray trayFromDB = pigService.registerTray(tray);
 
-		// send to next station
+		packingStation.recieveTrays(tray);
 		System.out.println("Sending tray: " + tray.getId() + ", to next station");
 		sleep(1000);
 	}

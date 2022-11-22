@@ -1,13 +1,19 @@
 package com.piggyfarm.grpc.slaughterhouse;
 
 import com.piggyfarm.grpc.model.*;
+import com.piggyfarm.grpc.service.PigService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class PackingStation implements Runnable
 {
-
+  @Autowired
+  private PigService pigService;
+  @Autowired
   private Shop shop;
   private List<Tray> trays;
 
@@ -20,7 +26,6 @@ public class PackingStation implements Runnable
   private HeadAndBottomProduct headAndBottom;
   private RibsAndLegsProduct ribsAndLegs;
 
-
   public PackingStation(Shop shop)
   {
     this.shop = shop;
@@ -31,10 +36,7 @@ public class PackingStation implements Runnable
     ribsAndLegs = new RibsAndLegsProduct();
   }
 
-
-
-
-  public void recieveTrays(Tray tray)
+  public void recieveTray(Tray tray)
   {
     this.trays.add(tray);
   }
@@ -43,10 +45,10 @@ public class PackingStation implements Runnable
   {
     while (true)
     {
-    if (!trays.isEmpty())
-    {
-      cyclePigParts();
-      for (Tray specTray : trays)
+      if (!trays.isEmpty())
+      {
+        cyclePigParts();
+        for (Tray specTray : trays)
         {
           if (specTray.getPigPart() == partToLookfor)
           {
@@ -57,8 +59,6 @@ public class PackingStation implements Runnable
     }
   }
 
-
-
   private void cyclePigParts()
   {
     partToLookfor = pigPartsList.get(count);
@@ -66,21 +66,20 @@ public class PackingStation implements Runnable
 
     count++;
 
-    if (count == pigPartsList.size()){
+    if (count == pigPartsList.size())
+    {
       count = 0;
     }
   }
-
-
 
   private void addToPackage(Tray tray)
   {
     if (partToLookfor == PigPartType.HEAD && headAndBottom.getHead() == null)
     {
       headAndBottom.setHead(tray.getParts().remove(0));
-
     }
-    if (partToLookfor == PigPartType.BOTTOM && headAndBottom.getBottom() == null)
+    if (partToLookfor == PigPartType.BOTTOM
+        && headAndBottom.getBottom() == null)
     {
       headAndBottom.setBottom(tray.getParts().remove(0));
     }
@@ -94,34 +93,33 @@ public class PackingStation implements Runnable
     }
 
     if (headAndBottom.isFull())
-      sendFullPackage(headAndBottom);
+      sendFullProduct(headAndBottom);
     if (ribsAndLegs.isFull())
-      sendFullPackage(ribsAndLegs);
+      sendFullProduct(ribsAndLegs);
   }
 
-  private void sendFullPackage(Product packageToSend)
+  private void sendFullProduct(Product productToSend)
   {
-      //Calculate weight
+    //Calculate weight
     double weight = 0;
-    for (Part specPart:packageToSend.getParts())
+    for (Part specPart : productToSend.getParts())
     {
       weight += specPart.getWeight();
     }
-    packageToSend.setWeight(weight);
+    productToSend.setWeight(weight);
 
-      //Dokumentér på database
+    //Register to database
+    Product registeredProduct = pigService.registerProduct(productToSend);
 
+    //Send til shop
+    shop.deliverProduct(registeredProduct);
 
-      //Send til shop
-      shop.deliverProduct(packageToSend);
-
-
-      //refresh product
-    if (packageToSend instanceof HeadAndBottomProduct)
+    //refresh product
+    if (productToSend instanceof HeadAndBottomProduct)
     {
       headAndBottom = new HeadAndBottomProduct();
     }
-    if (packageToSend instanceof RibsAndLegsProduct)
+    if (productToSend instanceof RibsAndLegsProduct)
     {
       ribsAndLegs = new RibsAndLegsProduct();
     }

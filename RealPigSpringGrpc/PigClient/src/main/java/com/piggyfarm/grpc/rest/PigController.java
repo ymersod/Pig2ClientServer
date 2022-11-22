@@ -25,9 +25,6 @@ public class PigController {
         return pigService.findProductFromPig(pigId);
     }
 
-    @RequestMapping("/piggy")
-    public String printMessage(@RequestParam(defaultValue = "Michael") String name, @RequestParam(defaultValue = "Poop") String lastname) {
-        return pigService.sendMessage(name,lastname);
-    }
+
 
 }

@@ -47,19 +47,6 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
         responseObserver.onCompleted();
     }
 
-    @Override
-    public void sayHello(HelloRequest request, StreamObserver<HelloResponse> responseObserver) {
 
-
-        String greeting = String.format("Hello, %s %s!",
-                request.getFirstName(),
-                request.getLastName());
-        HelloResponse response = HelloResponse.newBuilder()
-                .setGreeting(greeting)
-                .build();
-        responseObserver.onNext(response);
-        responseObserver.onCompleted();
-
-    }
 
 }

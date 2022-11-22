@@ -5,15 +5,6 @@ package pigService;
 option java_package = "com.pigfarm.pig";
 option java_multiple_files = true;
 
-message HelloRequest {
-  string firstName = 1;
-  string lastName = 2;
-}
-
-message HelloResponse {
-  string greeting = 1;
-
-}
 
 message PigsRequest {
   int32 productId = 1;
@@ -21,6 +12,10 @@ message PigsRequest {
 
 message PigsResponse {
   repeated PigObject pigs = 1;
+}
+
+message PigToBeRegistered {
+  double weight = 1;
 }
 
 message PigObject {
@@ -39,14 +34,42 @@ message ProductResponse {
 message ProductObject {
   int32 id = 1;
   double weight = 2;
+  repeated RegisteredPartObject parts = 3;
 }
 
-message PigToBeRegistered {
+message ProductToBeRegistered{
   double weight = 1;
+  repeated RegisteredPartObject parts = 2;
+}
+
+message TrayToBeRegistered{
+  string trayId = 1;
+  double weight = 2;
+  repeated PartObject partsToBeRegistered= 3;
+}
+
+message PartObject{
+  double weight = 1;
+  string partType = 2;
+  int32 pigId = 3;
+}
+
+message TrayResponse{
+  string trayId = 1;
+  double weight = 2;
+  repeated RegisteredPartObject registeredParts = 3;
+}
+
+message RegisteredPartObject{
+  int32 partId = 1;
+  double weight = 2;
+  string partType = 3;
+  int32 pigId = 4;
 }
 
 service PigService {
-  rpc SayHello(HelloRequest) returns (HelloResponse);
+  rpc RegisterProduct(ProductToBeRegistered) returns (ProductObject);
+  rpc RegisterTray(TrayToBeRegistered) returns (TrayResponse);
   rpc FindPigsFromProduct(PigsRequest) returns (PigsResponse);
   rpc FindProductsFromPigs(ProductRequest) returns (ProductResponse);
   rpc RegisterPig(PigToBeRegistered) returns (PigObject);
