@@ -1,6 +1,7 @@
-package com.piggyfarm.grpc.gRPCNetworking.controller;
+package com.piggyfarm.grpc.rest;
 
 
+import com.piggyfarm.grpc.service.PigService;
 import com.piggyfarm.grpc.model.Pig;
 import com.piggyfarm.grpc.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;

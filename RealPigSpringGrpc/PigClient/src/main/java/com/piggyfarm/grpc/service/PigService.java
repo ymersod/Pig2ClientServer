@@ -1,4 +1,4 @@
-package com.piggyfarm.grpc.gRPCNetworking.controller;
+package com.piggyfarm.grpc.service;
 
 import com.pigfarm.pig.*;
 

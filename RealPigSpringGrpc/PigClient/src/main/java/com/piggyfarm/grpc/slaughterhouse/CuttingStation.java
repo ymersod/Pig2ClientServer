@@ -59,7 +59,7 @@ public class CuttingStation implements Runnable {
 
 		Part bottom = new Part(bottomWeight, pigId, PigPartType.BOTTOM);
 
-		System.out.println("Cutting pig " + pigId);
+		System.out.println("Cutting pig: " + pigId);
 		sleep(5000);
 
 		return Arrays.asList(head, ribs1, ribs2, leg1, leg2, leg3, leg4, bottom);
@@ -83,7 +83,7 @@ public class CuttingStation implements Runnable {
 		// Tray trayFromDB = db.getTray;
 
 		// send to next station
-		System.out.println("Sending tray " + tray.getId() + " to next station");
+		System.out.println("Sending tray: " + tray.getId() + ", to next station");
 		sleep(1000);
 	}
 
