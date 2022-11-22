@@ -47,6 +47,35 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
         responseObserver.onCompleted();
     }
 
+    @Override
+    public void registerPig(PigToBeRegistered piggy, StreamObserver<PigObject> pigObject)
+    {
+        double pigWeight = piggy.getWeight();
+
+        PigObject piggyRegistered = dataBaseAccess.registerPig(pigWeight);
+
+        pigObject.onNext(piggyRegistered);
+        pigObject.onCompleted();
+    }
+
+    @Override
+    public void registerTray(TrayToBeRegistered trayToBeRegistered, StreamObserver<TrayResponse> trayResponse)
+    {
+        TrayResponse tray = dataBaseAccess.registerPigParts(trayToBeRegistered);
+
+        trayResponse.onNext(tray);
+        trayResponse.onCompleted();
+    }
+
+    @Override
+    public void registerProduct(ProductToBeRegistered productToBeRegistered, StreamObserver<ProductObject> productObject)
+    {
+        ProductObject product = dataBaseAccess.registerProduct(productToBeRegistered);
+
+        productObject.onNext(product);
+        productObject.onCompleted();
+    }
+
 
 
 }

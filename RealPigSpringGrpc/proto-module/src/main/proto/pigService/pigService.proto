@@ -68,9 +68,9 @@ message RegisteredPartObject{
 }
 
 service PigService {
+  rpc RegisterPig(PigToBeRegistered) returns (PigObject);
   rpc RegisterProduct(ProductToBeRegistered) returns (ProductObject);
   rpc RegisterTray(TrayToBeRegistered) returns (TrayResponse);
   rpc FindPigsFromProduct(PigsRequest) returns (PigsResponse);
   rpc FindProductsFromPigs(ProductRequest) returns (ProductResponse);
-  rpc RegisterPig(PigToBeRegistered) returns (PigObject);
 }

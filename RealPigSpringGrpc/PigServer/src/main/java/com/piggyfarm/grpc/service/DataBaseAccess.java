@@ -1,7 +1,6 @@
 package com.piggyfarm.grpc.service;
 
-import com.pigfarm.pig.PigObject;
-import com.pigfarm.pig.ProductObject;
+import com.pigfarm.pig.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -104,16 +103,15 @@ public class DataBaseAccess {
         return pig;
     }
 
-    public PigObject registerPigParts(TempPigParts temp)
-    {
+    public TrayResponse registerPigParts(TrayToBeRegistered temp) {
         Connection c = Connect();
         String statement = "insert into \"PigReg\".part (weight, pigid, trayid, name) values ";
 
         int i = 1;
-        for ( TempPigPart part:temp.getParts()) {
+        for ( PartObject part: temp.getPartsToBeRegisteredList()) {
             statement += "(" + part.getWeight() + ", " + part.getPigId() + ", '"
-                    + temp.getTrayId() + "', '" + part.getName() + "')";
-            if(i++ != temp.getParts().size()){
+                    + temp.getTrayId() + "', '" + part.getPartType() + "')";
+            if(i++ != temp.getPartsToBeRegisteredList().size()){
                 System.out.println("yo");
                 statement += ", ";
             }
@@ -122,37 +120,54 @@ public class DataBaseAccess {
         System.out.println(statement);
         PigObject pig = null;
         try {
-            PreparedStatement getPigsInProduct = c.prepareStatement(statement);
-            ResultSet productFromPigResult = getPigsInProduct.executeQuery();
-            if (productFromPigResult != null)
-                while (productFromPigResult.next())
+            PreparedStatement toBeRegisteredParts = c.prepareStatement(statement);
+            ResultSet registeredParts = toBeRegisteredParts.executeQuery();
+            if (registeredParts != null)
+            {
+                List<RegisteredPartObject> parts = new ArrayList<>();
+                while (registeredParts.next())
                 {
-                    System.out.println(productFromPigResult.getInt("id"));
-                    /*pig = PigObject.newBuilder()
-                            .setId(productFromPigResult.getString("id"))
-                            .setWeight(Double.parseDouble(productFromPigResult.getString("weight")))
-                            .build();*/
+                    RegisteredPartObject part = RegisteredPartObject.newBuilder()
+                            .setPigId(registeredParts.getInt("pig_id"))
+                            .setWeight(registeredParts.getInt("weight"))
+                            .setPartType(registeredParts.getString("name"))
+                            .setPartId(registeredParts.getInt("id"))
+                            .build();
+
+                    parts.add(part);
                 }
+
+                TrayResponse trayResponse = TrayResponse.newBuilder()
+                        .setTrayId(temp.getTrayId())
+                        .setWeight(temp.getWeight())
+                        .addAllRegisteredParts(parts)
+                        .build();
+
+                c.close();
+                return trayResponse;
+            }
             c.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return pig;
+        return null;
     }
 
-    public PigObject registerProduct(TempPackagething temp)
+    public ProductObject registerProduct(ProductToBeRegistered temp)
     {
         Connection c = Connect();
-        String statement = "INSERT INTO \"PigReg\".product (name) Values ('"+ temp.getName() +"') RETURNING *;";
+        String statement = "INSERT INTO \"PigReg\".product (name) Values ('HAHA') RETURNING *;";
 
         int packageId;
 
         try {
-            PreparedStatement getPigsInProduct = c.prepareStatement(statement);
-            ResultSet productFromPigResult = getPigsInProduct.executeQuery();
-            productFromPigResult.next();
-            packageId = productFromPigResult.getInt("id");
+            PreparedStatement productToBeRegistered = c.prepareStatement(statement);
+            ResultSet registeredProduct = productToBeRegistered.executeQuery();
+            registeredProduct.next();
+
+            packageId = registeredProduct.getInt("id");
             System.out.println(packageId);
+            c.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -160,36 +175,50 @@ public class DataBaseAccess {
         statement = "UPDATE \"PigReg\".part SET productid = "+packageId+" where id in (";
         int i = 1;
 
-        for ( TempPigPart part:temp.getParts()) {
-            statement += part.getId();
-            if(i++ != temp.getParts().size())
+        for (RegisteredPartObject part:temp.getPartsList()) {
+            statement += part.getPartId();
+            if(i++ != temp.getPartsList().size())
                 statement += ", ";
         }
-
         statement += ") RETURNING *;";
+        ProductObject product = ProductObject.newBuilder()
+                .setId(packageId)
+                .addAllParts(temp.getPartsList())
+                .build();
 
-        PigObject pig = null;
-        try {
-            System.out.println("got here 5");
-
-            PreparedStatement getPigsInProduct = c.prepareStatement(statement);
-            ResultSet productFromPigResult = getPigsInProduct.executeQuery();
-            if (productFromPigResult != null)
-                while (productFromPigResult.next())
+        return product;
+        /*try {
+            PreparedStatement toBeRegisteredParts = c.prepareStatement(statement);
+            ResultSet registeredParts = toBeRegisteredParts.executeQuery();
+            if (registeredParts != null)
+            {
+                List<RegisteredPartObject> parts = new ArrayList<>();
+                while (registeredParts.next())
                 {
-                    System.out.println("got here 3");
+                    RegisteredPartObject part = RegisteredPartObject.newBuilder()
+                            .setPigId(registeredParts.getInt("pig_id"))
+                            .setWeight(registeredParts.getInt("weight"))
+                            .setPartType(registeredParts.getString("name"))
+                            .setPartId(registeredParts.getInt("id"))
+                            .build();
 
-                    System.out.println(productFromPigResult.getInt("productid"));
-                    /*pig = PigObject.newBuilder()
-                            .setId(productFromPigResult.getString("id"))
-                            .setWeight(Double.parseDouble(productFromPigResult.getString("weight")))
-                            .build();*/
+                    parts.add(part);
+                }
+
+                TrayResponse trayResponse = TrayResponse.newBuilder()
+                        .setTrayId(temp.getTrayId())
+                        .setWeight(temp.getWeight())
+                        .addAllRegisteredParts(parts)
+                        .build();
+
+                c.close();
+                return trayResponse;
+
                 }
             c.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
+        }*/
 
-        return pig;
     }
 }

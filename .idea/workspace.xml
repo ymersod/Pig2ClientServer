@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22fb9467-3b28-443c-a1ad-7f8fc218fcce" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/Agent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/rest/PigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/rest/PigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/service/PigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/service/PigService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/CuttingStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/CuttingStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/PackingStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/PackingStation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/src/main/java/com/piggyfarm/grpc/slaughterhouse/Shop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/DataBaseAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/DataBaseAccess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/PigServerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/PigServerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/src/main/java/com/piggyfarm/grpc/service/Test.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/src/main/proto/pigService/pigService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/src/main/proto/pigService/pigService.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +43,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "spring.configuration.checksum": "65fbf51f355aff7ddced3226f859028e"
   }
@@ -88,6 +83,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.PigClientServiceApplication" />
+      <item itemvalue="Spring Boot.PigServerServiceApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.PigClientServiceApplication" />
