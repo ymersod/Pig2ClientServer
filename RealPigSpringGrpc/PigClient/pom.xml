@@ -10,6 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>PigClient</artifactId>
 
+    <properties>
+        <!-- The main class to start by executing "java -jar" -->
+        <start-class>com.piggyfarm.grpc.slaughterhouse.PigFarm</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -27,5 +32,16 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.piggyfarm.grpc.slaughterhouse.PigFarm</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

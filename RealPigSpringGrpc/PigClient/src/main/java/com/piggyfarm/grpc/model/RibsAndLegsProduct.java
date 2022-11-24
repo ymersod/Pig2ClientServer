@@ -46,6 +46,7 @@ public class RibsAndLegsProduct extends Product
   public void setRibs(Part ribs)
   {
     this.ribs = ribs;
+    super.getParts().add(ribs);
     if (getLegs() != null && getRibs() != null)
       isFull = true;
   }
@@ -58,6 +59,7 @@ public class RibsAndLegsProduct extends Product
   public void setLegs(Part legs)
   {
     this.legs = legs;
+    super.getParts().add(legs);
     if (getLegs() != null && getRibs() != null)
       isFull = true;
   }

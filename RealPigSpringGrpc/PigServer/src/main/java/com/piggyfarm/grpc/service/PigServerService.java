@@ -61,8 +61,8 @@ public class PigServerService extends PigServiceGrpc.PigServiceImplBase {
     @Override
     public void registerTray(TrayToBeRegistered trayToBeRegistered, StreamObserver<TrayResponse> trayResponse)
     {
+        System.out.println("got here boyssss");
         TrayResponse tray = dataBaseAccess.registerPigParts(trayToBeRegistered);
-
         trayResponse.onNext(tray);
         trayResponse.onCompleted();
     }

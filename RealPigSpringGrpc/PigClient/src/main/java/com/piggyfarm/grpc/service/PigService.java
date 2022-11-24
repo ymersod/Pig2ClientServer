@@ -61,7 +61,7 @@ public class PigService {
             PigObject registeredPig = this.pigServiceBlockingStub.registerPig(PigToBeRegistered.newBuilder()
                     .setWeight(pig.getWeight())
                     .build());
-
+            System.out.println(registeredPig.getId() + registeredPig.getWeight());
 
             //Conversion from gRPC object to domain object
             Pig piggy = new Pig(registeredPig.getId(),registeredPig.getWeight());
@@ -69,25 +69,27 @@ public class PigService {
             return piggy;
         }
         catch(Exception e){
-            System.out.println(e.getStackTrace());
-            return null;
+            throw new RuntimeException(e);
         }
     }
 
-    public Tray registerTray(final Tray tray){
+    public Tray registerTray(Tray tray){
+        System.out.println("Yoyo mama got here boy");
         try
         {
+            System.out.println(tray);
             List<PartObject> partsToRegister = new ArrayList<>();
 
             for (Part specPart : tray.getParts())
             {
+                System.out.println(specPart.getPigId() + "  " + specPart.getWeight() + " " + specPart.getPartType());
                 partsToRegister.add(PartObject.newBuilder().setWeight(specPart.getWeight())
                     .setPartType(specPart.getPartType().toString()).setPigId(specPart.getPigId()).build());
             }
-
+            System.out.println("got here 1");
             TrayResponse registeredTray = this.pigServiceBlockingStub.registerTray(
                 TrayToBeRegistered.newBuilder().setTrayId(tray.getId()).addAllPartsToBeRegistered(partsToRegister).build());
-
+            System.out.println("got here 2");
             List<Part> partsToReturn = new ArrayList<>();
 
             for (RegisteredPartObject specPart : registeredTray.getRegisteredPartsList())
@@ -100,8 +102,7 @@ public class PigService {
                 PigPartType.valueOf(registeredTray.getRegisteredParts(0).getPartType()));
             return trayToReturn;
         }catch(Exception e){
-            System.out.println(e.getStackTrace());
-            return null;
+            throw  new RuntimeException(e);
         }
     }
 

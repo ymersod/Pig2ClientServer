@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class Tray
 {
-  private static final int MAX_WEIGHT = 100;
+  private static final int MAX_WEIGHT = 51;
 
   private String id;
   private List<Part> parts; //update

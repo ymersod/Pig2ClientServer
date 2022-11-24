@@ -29,14 +29,14 @@ public class PackingStation implements Runnable
   public PackingStation(Shop shop)
   {
     this.shop = shop;
-    trays = new ArrayList<Tray>();
-    run();
+    trays = new ArrayList<>();
+    new Thread(this).start();
 
     headAndBottom = new HeadAndBottomProduct();
     ribsAndLegs = new RibsAndLegsProduct();
   }
 
-  public void recieveTray(Tray tray)
+  public synchronized void recieveTray(Tray tray)
   {
     this.trays.add(tray);
   }
@@ -47,14 +47,24 @@ public class PackingStation implements Runnable
     {
       if (!trays.isEmpty())
       {
-        cyclePigParts();
-        for (Tray specTray : trays)
-        {
-          if (specTray.getPigPart() == partToLookfor)
-          {
-            addToPackage(specTray);
-          }
+        try {
+          Thread.sleep(5000);
+        } catch (InterruptedException e) {
+          throw new RuntimeException(e);
         }
+        trySearching();
+      }
+    }
+  }
+
+  private synchronized void trySearching(){
+    cyclePigParts();
+    for (Tray specTray : trays)
+    {
+      if (specTray.getPigPart() == partToLookfor)
+      {
+        addToPackage(specTray);
+        break;
       }
     }
   }
@@ -91,7 +101,8 @@ public class PackingStation implements Runnable
     {
       ribsAndLegs.setRibs(tray.getParts().remove(0));
     }
-
+    if (tray.getParts().isEmpty())
+      trays.remove(tray);
     if (headAndBottom.isFull())
       sendFullProduct(headAndBottom);
     if (ribsAndLegs.isFull())
@@ -100,6 +111,7 @@ public class PackingStation implements Runnable
 
   private void sendFullProduct(Product productToSend)
   {
+    System.out.println(productToSend.getParts().get(0).getPartType());
     //Calculate weight
     double weight = 0;
     for (Part specPart : productToSend.getParts())

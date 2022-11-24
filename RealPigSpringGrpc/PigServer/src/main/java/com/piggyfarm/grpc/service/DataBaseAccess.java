@@ -106,19 +106,15 @@ public class DataBaseAccess {
     public TrayResponse registerPigParts(TrayToBeRegistered temp) {
         Connection c = Connect();
         String statement = "insert into \"PigReg\".part (weight, pigid, trayid, name) values ";
-
         int i = 1;
         for ( PartObject part: temp.getPartsToBeRegisteredList()) {
             statement += "(" + part.getWeight() + ", " + part.getPigId() + ", '"
                     + temp.getTrayId() + "', '" + part.getPartType() + "')";
             if(i++ != temp.getPartsToBeRegisteredList().size()){
-                System.out.println("yo");
                 statement += ", ";
             }
         }
         statement += " RETURNING *;";
-        System.out.println(statement);
-        PigObject pig = null;
         try {
             PreparedStatement toBeRegisteredParts = c.prepareStatement(statement);
             ResultSet registeredParts = toBeRegisteredParts.executeQuery();
@@ -128,7 +124,7 @@ public class DataBaseAccess {
                 while (registeredParts.next())
                 {
                     RegisteredPartObject part = RegisteredPartObject.newBuilder()
-                            .setPigId(registeredParts.getInt("pig_id"))
+                            .setPigId(registeredParts.getInt("pigid"))
                             .setWeight(registeredParts.getInt("weight"))
                             .setPartType(registeredParts.getString("name"))
                             .setPartId(registeredParts.getInt("id"))
@@ -150,7 +146,7 @@ public class DataBaseAccess {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        throw new RuntimeException();
     }
 
     public ProductObject registerProduct(ProductToBeRegistered temp)
@@ -167,11 +163,10 @@ public class DataBaseAccess {
 
             packageId = registeredProduct.getInt("id");
             System.out.println(packageId);
-            c.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+        System.out.println(statement);
         statement = "UPDATE \"PigReg\".part SET productid = "+packageId+" where id in (";
         int i = 1;
 
@@ -185,7 +180,15 @@ public class DataBaseAccess {
                 .setId(packageId)
                 .addAllParts(temp.getPartsList())
                 .build();
-
+        PreparedStatement toBeRegisteredParts = null;
+        try {
+            toBeRegisteredParts = c.prepareStatement(statement);
+            toBeRegisteredParts.executeQuery();
+            c.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(statement);
         return product;
         /*try {
             PreparedStatement toBeRegisteredParts = c.prepareStatement(statement);

@@ -21,7 +21,7 @@ public class Shop implements Runnable
   public Shop()
   {
     productsInShop = new HashMap<>();
-    run();
+    new Thread(this).start();
   }
   public void deliverProduct(Product packageToSend)
   {
@@ -42,9 +42,11 @@ public class Shop implements Runnable
           Integer[] products = productsInShop.keySet().toArray(new Integer[0]);
 
           int randomProduct = (int)Math.floor(Math.random() * products.length);
-          int key = products[randomProduct];
+          if (products.length != 0) {
+            int key = products[randomProduct];
 
-          foundBadProduct(productsInShop.get(key));
+            foundBadProduct(productsInShop.get(key));
+          }
         }
 
 

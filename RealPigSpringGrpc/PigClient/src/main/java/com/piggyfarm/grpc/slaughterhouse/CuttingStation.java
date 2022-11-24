@@ -18,23 +18,27 @@ public class CuttingStation implements Runnable {
 
 	@Autowired
 	private PackingStation packingStation;
-	private final List<Pig> pigs;
+	private final Queue<Pig> pigs;
 	private final HashMap<PigPartType, Tray> trays;
 
 
 
 	public CuttingStation() {
-		pigs = new ArrayList<>();
+		pigs = new ArrayDeque<>();
 		trays = new HashMap<>();
 
-		run();
+		for (PigPartType part:PigPartType.values()) {
+			trays.put(part, new Tray(part));
+		}
+
+		new Thread(this).start();
 	}
 
 	@Override
 	public void run() {
 		while (true) {
 			if (!pigs.isEmpty()) {
-				Pig pig = pigs.remove(0);
+				Pig pig = pigs.remove();
 				List<Part> parts = cutPig(pig);
 				parts.forEach(this::addPartToTray);
 			}
@@ -42,6 +46,7 @@ public class CuttingStation implements Runnable {
 	}
 
 	public void addPig(Pig pig) {
+		System.out.println(pig);
 		pigs.add(pig);
 	}
 
@@ -89,10 +94,11 @@ public class CuttingStation implements Runnable {
 	}
 
 	private void sendTray(Tray tray) {
+		System.out.println(pigService);
 		Tray trayFromDB = pigService.registerTray(tray);
 
-		packingStation.recieveTrays(tray);
-		System.out.println("Sending tray: " + tray.getId() + ", to next station");
+		packingStation.recieveTray(trayFromDB);
+		System.out.println("Sending tray: " + trayFromDB.getId() + ", to next station");
 		sleep(1000);
 	}
 

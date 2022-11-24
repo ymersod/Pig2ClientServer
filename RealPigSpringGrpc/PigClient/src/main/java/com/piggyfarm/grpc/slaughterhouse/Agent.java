@@ -25,8 +25,8 @@ public class Agent {
 
         for (Pig badPig: badPigs) {
             List<Product> badProductsFromBadPig = pigService.findProductFromPig(badPig.getId());
-            for (Product frfrBadProd: badProductsFromBadPig) {
-                badProducts.put(frfrBadProd.getId(),frfrBadProd);
+            for (Product stinky: badProductsFromBadPig) {
+                badProducts.put(stinky.getId(),stinky);
             }
         }
         return badProducts;

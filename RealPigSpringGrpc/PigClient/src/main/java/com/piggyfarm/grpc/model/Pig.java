@@ -13,7 +13,7 @@ public class Pig
 
   public Pig(double weight)
   {
-
+    this.weight = weight;
   }
 
   public int getId()
