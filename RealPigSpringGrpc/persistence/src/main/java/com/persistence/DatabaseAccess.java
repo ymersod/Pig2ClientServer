@@ -6,22 +6,21 @@ import com.domain.dtos.RegisterPigDto;
 import com.domain.dtos.RegisterProductDto;
 import com.domain.dtos.RegisterTrayDto;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
 
-    private String sName = "public";
+    private String sName = "\"PigReg\"";
     private Connection Connect()
     {
-        Connection c = null;
+        Connection c;
         try {
-            // Class.forName("org.postgresql.Driver");
-            c = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/postgres",
-                    "postgres",
-                    "123"
-            );
+            c = DriverManager
+                    .getConnection("jdbc:postgresql://localhost:5433/postgres",
+                            "postgres", "9097");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -33,9 +32,9 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
     {
         Connection c = Connect();
 
-        String statement = "SELECT  pig.id, pig.weight FROM \"public\".pig " +
-                "INNER JOIN \"public\".part on part.pigId = pig.id " +
-                "INNER JOIN \"public\".product on product.id = part.productId " +
+        String statement = "SELECT  pig.id, pig.weight FROM "+ sName +".pig " +
+                "INNER JOIN "+ sName +".part on part.pigId = pig.id " +
+                "INNER JOIN "+ sName +".product on product.id = part.productId " +
                 "where product.id = " + productId + ";";
 
         List<Pig> pigs = new ArrayList<>();
@@ -68,10 +67,10 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
     {
         Connection c = Connect();
 
-        String statement = "SELECT  product.id, product.name, (Select sum(pa.weight) as weight from \"public\".product as pu " +
-                "inner join \"public\".part as pa on pa.productId = pu.id where pu.id = product.id) FROM \"public\".product " +
-                "INNER JOIN \"public\".part on part.productId = product.id " +
-                "INNER JOIN \"public\".pig on part.pigId = pig.id " +
+        String statement = "SELECT  product.id, product.name, (Select sum(pa.weight) as weight from "+ sName +".product as pu " +
+                "inner join "+ sName +".part as pa on pa.productId = pu.id where pu.id = product.id) FROM "+ sName +".product " +
+                "INNER JOIN "+ sName +".part on part.productId = product.id " +
+                "INNER JOIN "+ sName +".pig on part.pigId = pig.id " +
                 "where pig.id = " + pigId +
                 " group by product.id;";
 
@@ -107,7 +106,7 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
 
         Connection c = Connect();
 
-        String statement = "INSERT INTO \"public\".pig(weight)\n values (" + weight +") RETURNING *;";
+        String statement = "INSERT INTO "+ sName +".pig(weight, origin)\n values (" + weight + ", '" + pigDto.getOrigin() + "') RETURNING *;";
 
         Pig pig = null;
 
@@ -134,7 +133,7 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
     public Tray registerTray(RegisterTrayDto registerTrayDto) {
         Connection c = Connect();
 
-        String statement = "insert into \"public\".part (weight, pigid, trayid, name) values ";
+        String statement = "insert into "+ sName +".part (weight, pigid, trayid, name) values ";
 
         int i = 1;
 
@@ -185,7 +184,7 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
     public Product registerProduct(RegisterProductDto registerProductDto)
     {
         Connection c = Connect();
-        String statement = "INSERT INTO \"public\".product (name) Values ('Produkt Navn') RETURNING *;";
+        String statement = "INSERT INTO "+ sName +".product (name) Values ('Produkt Navn') RETURNING *;";
 
         int packageId;
 
@@ -199,7 +198,7 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
             throw new RuntimeException(e);
         }
 
-        statement = "UPDATE \"public\".part SET productid = "+packageId+" where id in (";
+        statement = "UPDATE "+ sName +".part SET productid = "+packageId+" where id in (";
         int i = 1;
 
         for (Part part : registerProductDto.getParts()) {
@@ -229,6 +228,40 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
         }
 
         return product;
+    }
+
+    public List<Pig> getFromOrigin(String origin)
+    {
+        Connection c = Connect();
+        String statement = "SELECT * FROM "+ sName +".pig WHERE origin = '" + origin + "';";
+        return getPigs(c, statement);
+    }
+
+    public List<Pig> getFromDate(LocalDate date)
+    {
+        Connection c = Connect();
+        String statement = "SELECT * FROM "+ sName +".pig WHERE date = '" + date + "';";
+        return getPigs(c, statement);
+    }
+
+    private List<Pig> getPigs(Connection c, String statement) {
+        List<Pig> toReturn = new ArrayList<>();
+        try {
+            PreparedStatement productToBeRegistered = c.prepareStatement(statement);
+            ResultSet registeredProduct = productToBeRegistered.executeQuery();
+
+            while (registeredProduct.next())
+            {
+                toReturn.add(
+                    new Pig(registeredProduct.getInt("id"),
+                            registeredProduct.getDouble("weight"),
+                            registeredProduct.getString("origin"))
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return toReturn;
     }
 }
 

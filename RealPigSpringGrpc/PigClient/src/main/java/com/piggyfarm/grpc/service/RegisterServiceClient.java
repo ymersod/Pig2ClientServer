@@ -23,7 +23,7 @@ public class RegisterServiceClient {
 
 	public Pig registerPig(Pig pig) {
 		RegisterPigDto registerPigDto = new RegisterPigDto(
-						pig.getWeight()
+						pig.getWeight(), pig.getOrigin()
 		);
 
 		return restTemplate.postForObject("http://localhost:8082/pigs", registerPigDto, Pig.class);
