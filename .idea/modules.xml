@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/AgentService/AgentService.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/AgentService/AgentService.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Pig2ClientServer.iml" filepath="$PROJECT_DIR$/.idea/Pig2ClientServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/PigClient/PigClient.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/PigClient/PigClient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/PigServer/PigServer.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/PigServer/PigServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/RealPigSpringGrpc.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/RealPigSpringGrpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/RegisterService/RegisterService.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/RegisterService/RegisterService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/domain/domain.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/domain/domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/persistence/persistence.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/persistence/persistence.iml" />
       <module fileurl="file://$PROJECT_DIR$/RealPigSpringGrpc/proto-module/proto-module.iml" filepath="$PROJECT_DIR$/RealPigSpringGrpc/proto-module/proto-module.iml" />
     </modules>
   </component>
