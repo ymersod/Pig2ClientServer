@@ -23,6 +23,7 @@ public class Shop implements Runnable
   }
   public void deliverProduct(Product packageToSend)
   {
+    System.out.println("Received product: " + packageToSend.getId());
     productsInShop.put(packageToSend.getId(),packageToSend);
   }
 
@@ -57,6 +58,7 @@ public class Shop implements Runnable
 
   private void foundBadProduct(Product badProduct)
   {
+    System.out.println("Found bad product, sending to agent");
     HashMap<Integer, Product> badPigsFromBadProduct = agentService.findBadPigsFromBadProduct(badProduct);
     removeBadProducts(badPigsFromBadProduct);
   }

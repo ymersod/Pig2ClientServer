@@ -18,6 +18,7 @@ public class PartsController {
 
 	@PostMapping
 	public Tray registerTray(@RequestBody RegisterTrayDto tray) {
+		System.out.println("TRAY PART TYPE: " + tray.getPartType());
 		return registerDataAccess.registerTray(tray);
 	}
 }

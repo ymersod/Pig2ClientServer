@@ -9,26 +9,30 @@ public class Tray
   private static final int MAX_WEIGHT = 51;
 
   private String id;
-  private List<Part> parts; //update
+  private List<Part> parts;
   private double weight;
 
-  private final PigPartType pigPart;
+  private PigPartType partType;
 
-  public Tray(PigPartType pigPart)
+  public Tray() {
+
+  }
+
+  public Tray(PigPartType partType)
   {
-    this.pigPart = pigPart;
+    this.partType = partType;
 
     id = UUID.randomUUID().toString();
     parts = new ArrayList<>();
     weight = 0;
   }
 
-  public Tray(String id, List<Part> parts, double weight, PigPartType pigPart)
+  public Tray(String id, List<Part> parts, double weight, PigPartType partType)
   {
     this.id = id;
     this.parts = parts;
     this.weight = weight;
-    this.pigPart = pigPart;
+    this.partType = partType;
   }
 
   public void addPart(Part part) throws RuntimeException
@@ -63,9 +67,9 @@ public class Tray
     return weight;
   }
 
-  public PigPartType getPigPart()
+  public PigPartType getPartType()
   {
-    return pigPart;
+    return partType;
   }
 
 

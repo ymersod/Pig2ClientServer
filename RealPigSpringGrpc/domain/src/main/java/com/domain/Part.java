@@ -6,7 +6,7 @@ public class Part
   private double weight;
   private int pigId;
 
-  private final PigPartType type;
+  private PigPartType type;
 
   public Part(double weight, int pigId, PigPartType type) {
     this.weight = weight;
@@ -14,14 +14,17 @@ public class Part
     this.type = type;
   }
 
-  public Part(int id, double weight, int pigId, PigPartType partType)
-
-  {
+  public Part(int id, double weight, int pigId, PigPartType type) {
     this.id = id;
     this.weight = weight;
     this.pigId = pigId;
-    this.type = partType;
+    this.type = type;
   }
+
+  public Part() {
+
+  }
+
   public int getId()
   {
     return id;
@@ -53,7 +56,7 @@ public class Part
   }
 
 
-  public PigPartType getType() {
+  public PigPartType getPartType() {
     return type;
   }
 

@@ -11,15 +11,17 @@ import java.util.List;
 
 public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
 
-    private String sName = "PigReg";
+    private String sName = "public";
     private Connection Connect()
     {
         Connection c = null;
         try {
-            Class.forName("org.postgresql.Driver");
-            c = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5432/postgres",
-                            "postgres", "123");
+            // Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/postgres",
+                    "postgres",
+                    "123"
+            );
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -31,9 +33,9 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
     {
         Connection c = Connect();
 
-        String statement = "SELECT  pig.id, pig.weight FROM \"PigReg\".pig " +
-                "INNER JOIN \"PigReg\".part on part.pigId = pig.id " +
-                "INNER JOIN \"PigReg\".product on product.id = part.productId " +
+        String statement = "SELECT  pig.id, pig.weight FROM \"public\".pig " +
+                "INNER JOIN \"public\".part on part.pigId = pig.id " +
+                "INNER JOIN \"public\".product on product.id = part.productId " +
                 "where product.id = " + productId + ";";
 
         List<Pig> pigs = new ArrayList<>();
@@ -66,10 +68,10 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
     {
         Connection c = Connect();
 
-        String statement = "SELECT  product.id, product.name, (Select sum(pa.weight) as weight from \"PigReg\".product as pu " +
-                "inner join \"PigReg\".part as pa on pa.productId = pu.id where pu.id = product.id) FROM \"PigReg\".product " +
-                "INNER JOIN \"PigReg\".part on part.productId = product.id " +
-                "INNER JOIN \"PigReg\".pig on part.pigId = pig.id " +
+        String statement = "SELECT  product.id, product.name, (Select sum(pa.weight) as weight from \"public\".product as pu " +
+                "inner join \"public\".part as pa on pa.productId = pu.id where pu.id = product.id) FROM \"public\".product " +
+                "INNER JOIN \"public\".part on part.productId = product.id " +
+                "INNER JOIN \"public\".pig on part.pigId = pig.id " +
                 "where pig.id = " + pigId +
                 " group by product.id;";
 
@@ -105,7 +107,7 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
 
         Connection c = Connect();
 
-        String statement = "INSERT INTO \"PigReg\".pig(weight)\n values (" + weight +") RETURNING *;";
+        String statement = "INSERT INTO \"public\".pig(weight)\n values (" + weight +") RETURNING *;";
 
         Pig pig = null;
 
@@ -132,11 +134,11 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
     public Tray registerTray(RegisterTrayDto registerTrayDto) {
         Connection c = Connect();
 
-        String statement = "insert into \"PigReg\".part (weight, pigid, trayid, name) values ";
+        String statement = "insert into \"public\".part (weight, pigid, trayid, name) values ";
 
         int i = 1;
 
-        for (RegisterPartDto part: registerTrayDto.getParts()) {
+        for (RegisterPartDto part : registerTrayDto.getParts()) {
             statement += "(" + part.getWeight() + ", " + part.getPigId() + ", '"
                     + registerTrayDto.getTrayId() + "', '" + part.getPartType() + "')";
 
@@ -169,7 +171,7 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
 
                 c.close();
 
-                return new Tray(registerTrayDto.getTrayId(), parts, registerTrayDto.getWeight(), registerTrayDto.getParts().get(0).getPartType());
+                return new Tray(registerTrayDto.getTrayId(), parts, registerTrayDto.getWeight(), registerTrayDto.getPartType());
             }
 
             c.close();
@@ -183,7 +185,7 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
     public Product registerProduct(RegisterProductDto registerProductDto)
     {
         Connection c = Connect();
-        String statement = "INSERT INTO \"PigReg\".product (name) Values ('HAHA') RETURNING *;";
+        String statement = "INSERT INTO \"public\".product (name) Values ('Produkt Navn') RETURNING *;";
 
         int packageId;
 
@@ -197,7 +199,7 @@ public class DatabaseAccess implements RegisterDataAccess, AgentDataAccess {
             throw new RuntimeException(e);
         }
 
-        statement = "UPDATE \"PigReg\".part SET productid = "+packageId+" where id in (";
+        statement = "UPDATE \"public\".part SET productid = "+packageId+" where id in (";
         int i = 1;
 
         for (Part part : registerProductDto.getParts()) {

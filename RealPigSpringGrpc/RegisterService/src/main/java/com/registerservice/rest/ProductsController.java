@@ -16,7 +16,7 @@ public class ProductsController {
 	@Autowired
 	private RegisterDataAccess registerDataAccess;
 
-	@PostMapping("/")
+	@PostMapping
 	public Product registerProduct(@RequestBody RegisterProductDto product) {
 		return registerDataAccess.registerProduct(product);
 	}

@@ -18,7 +18,6 @@ public class PigsController {
 
 	@PostMapping("/pigs")
 	public Pig registerPig(@RequestBody RegisterPigDto pig) {
-		System.out.println("ayo");
 		return registerDataAccess.registerPig(pig);
 	}
 }

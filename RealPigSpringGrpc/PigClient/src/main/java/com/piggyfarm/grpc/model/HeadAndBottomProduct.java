@@ -10,8 +10,6 @@ public class HeadAndBottomProduct extends Product
 
   private Part head;
   private Part bottom;
-  private boolean isFull;
-
 
   public HeadAndBottomProduct(int id, double weight, List<Part> parts)
   {
@@ -52,8 +50,6 @@ public class HeadAndBottomProduct extends Product
   {
     this.head = head;
     super.getParts().add(head);
-    if (getHead() != null && getBottom() != null)
-      isFull = true;
   }
 
   public Part getBottom()
@@ -65,12 +61,10 @@ public class HeadAndBottomProduct extends Product
   {
     this.bottom = bottom;
     super.getParts().add(bottom);
-    if (getHead() != null && getBottom() != null)
-      isFull = true;
   }
 
   public boolean isFull()
   {
-    return isFull;
+    return getHead() != null && getBottom() != null;
   }
 }

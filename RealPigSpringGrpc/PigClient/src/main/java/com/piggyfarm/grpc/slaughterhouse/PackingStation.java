@@ -66,7 +66,8 @@ public class PackingStation implements Runnable
     cyclePigParts();
     for (Tray specTray : trays)
     {
-      if (specTray.getPigPart() == partToLookfor)
+      System.out.println("Tray cycle: " + specTray.getPartType());
+      if (specTray.getPartType().equals(partToLookfor))
       {
         addToPackage(specTray);
         break;
@@ -89,6 +90,7 @@ public class PackingStation implements Runnable
 
   private void addToPackage(Tray tray)
   {
+    System.out.println("Adding to package: " + tray.getPartType());
     if (partToLookfor == PigPartType.HEAD && headAndBottom.getHead() == null)
     {
       headAndBottom.setHead(tray.getParts().remove(0));
@@ -106,17 +108,26 @@ public class PackingStation implements Runnable
     {
       ribsAndLegs.setRibs(tray.getParts().remove(0));
     }
-    if (tray.getParts().isEmpty())
+
+    System.out.println("Tray size: " + tray.getParts().size());
+    if (tray.getParts().isEmpty()) {
       trays.remove(tray);
-    if (headAndBottom.isFull())
+    } else {
+      System.out.println("ID: " + tray.getParts().get(0).getId());
+    }
+
+    if (headAndBottom.isFull()) {
       sendFullProduct(headAndBottom);
-    if (ribsAndLegs.isFull())
+    }
+
+    if (ribsAndLegs.isFull()) {
       sendFullProduct(ribsAndLegs);
+    }
   }
 
   private void sendFullProduct(Product productToSend)
   {
-    System.out.println(productToSend.getParts().get(0).getType());
+    System.out.println(productToSend.getParts().get(0).getPartType());
     //Calculate weight
     double weight = 0;
     for (Part specPart : productToSend.getParts())
@@ -126,6 +137,7 @@ public class PackingStation implements Runnable
     productToSend.setWeight(weight);
 
     //Register to database
+    System.out.println("Registering product to database");
     Product registeredProduct = registerServiceClient.registerProduct(productToSend);
 
     //Send til shop
@@ -141,5 +153,4 @@ public class PackingStation implements Runnable
       ribsAndLegs = new RibsAndLegsProduct();
     }
   }
-
 }

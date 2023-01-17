@@ -80,14 +80,14 @@ public class CuttingStation implements Runnable {
 
 	private void addPartToTray(Part part) {
 		try {
-			Tray tray = trays.get(part.getType());
+			Tray tray = trays.get(part.getPartType());
 			tray.addPart(part);
 		} catch (RuntimeException e) {
-			Tray oldTray = replaceTray(part.getType());
+			Tray oldTray = replaceTray(part.getPartType());
 			sendTray(oldTray);
 		}
 
-		System.out.println("Adding part: " + part.getId() + ", to tray of type: " + part.getType());
+		System.out.println("Adding part: to tray of type: " + part.getPartType());
 		sleep(1000);
 	}
 

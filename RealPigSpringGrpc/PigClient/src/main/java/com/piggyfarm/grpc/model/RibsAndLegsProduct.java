@@ -9,7 +9,6 @@ public class RibsAndLegsProduct extends Product
 {
   private Part ribs;
   private Part legs;
-  private boolean isFull;
 
   public RibsAndLegsProduct(int id, double weight, List<Part> parts)
   {
@@ -50,8 +49,6 @@ public class RibsAndLegsProduct extends Product
   {
     this.ribs = ribs;
     super.getParts().add(ribs);
-    if (getLegs() != null && getRibs() != null)
-      isFull = true;
   }
 
   public Part getLegs()
@@ -63,12 +60,10 @@ public class RibsAndLegsProduct extends Product
   {
     this.legs = legs;
     super.getParts().add(legs);
-    if (getLegs() != null && getRibs() != null)
-      isFull = true;
   }
 
   public boolean isFull()
   {
-    return isFull;
+    return getLegs() != null && getRibs() != null;
   }
 }
