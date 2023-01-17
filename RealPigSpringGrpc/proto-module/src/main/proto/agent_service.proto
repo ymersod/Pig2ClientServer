@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package AgentService;
+
+option java_multiple_files = true;
+
+message PartObject{
+  double weight = 1;
+  string partType = 2;
+  int32 pigId = 3;
+}
+
+message ProductObject {
+  int32 id = 1;
+  double weight = 2;
+  repeated PartObject parts = 3;
+}
+
+message FindBadPigsFromBadProductRequest {
+  ProductObject product = 1;
+}
+
+message FindBadPigsFromBadProductResponse {
+  repeated ProductObject products = 1;
+}
+
+service AgentService {
+  rpc FindBadPigsFromBadProduct (FindBadPigsFromBadProductRequest) returns (FindBadPigsFromBadProductResponse) {}
+}

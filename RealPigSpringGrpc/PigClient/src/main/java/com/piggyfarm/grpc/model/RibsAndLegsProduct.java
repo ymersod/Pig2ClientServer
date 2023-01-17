@@ -1,5 +1,8 @@
 package com.piggyfarm.grpc.model;
 
+import com.domain.Part;
+import com.domain.Product;
+
 import java.util.List;
 
 public class RibsAndLegsProduct extends Product

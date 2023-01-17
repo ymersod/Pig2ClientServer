@@ -1,20 +1,18 @@
 package com.piggyfarm.grpc.slaughterhouse;
 
-import com.piggyfarm.grpc.model.Product;
+import com.domain.Product;
+import com.piggyfarm.grpc.service.AgentServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 @Service
 public class Shop implements Runnable
 {
 
   @Autowired
-  private Agent agent;
+  private AgentServiceClient agentService;
 
   private HashMap<Integer,Product> productsInShop;
 
@@ -59,12 +57,12 @@ public class Shop implements Runnable
 
   private void foundBadProduct(Product badProduct)
   {
-    removeBadProducts(agent.findBadPigsFromBadProduct(badProduct));
+    HashMap<Integer, Product> badPigsFromBadProduct = agentService.findBadPigsFromBadProduct(badProduct);
+    removeBadProducts(badPigsFromBadProduct);
   }
 
   private void removeBadProducts(HashMap<Integer,Product> badProducts)
   {
-    System.out.println("Removing smth");
     badProducts.forEach((key, value) -> productsInShop.remove(key));
   }
 }

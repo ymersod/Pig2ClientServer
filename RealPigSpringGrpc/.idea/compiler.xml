@@ -6,18 +6,28 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="RegisterService" />
         <module name="proto-module" />
+        <module name="persistence" />
         <module name="PigClient" />
-        <module name="PigServer" />
+        <module name="domain" />
         <module name="calculatorService" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="PigServer" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="AgentService" options="" />
       <module name="PigClient" options="-parameters" />
       <module name="PigServer" options="-parameters" />
+      <module name="RealPigSpringGrpc" options="" />
+      <module name="RegisterService" options="-parameters" />
       <module name="calculatorService" options="-parameters" />
+      <module name="domain" options="-parameters" />
+      <module name="persistence" options="-parameters" />
       <module name="proto-module" options="-parameters" />
     </option>
   </component>

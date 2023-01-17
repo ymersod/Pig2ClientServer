@@ -1,20 +1,20 @@
 package com.piggyfarm.grpc.slaughterhouse;
 
-import com.piggyfarm.grpc.service.PigService;
-import com.piggyfarm.grpc.model.Pig;
+import com.domain.Pig;
+import com.piggyfarm.grpc.service.RegisterServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ArrivalStation {
     @Autowired
-    private PigService pigService;
+    private RegisterServiceClient registerServiceClient;
 
     @Autowired
     private CuttingStation cuttingStation;
 
     public void registerPig(Pig pig) {
-        Pig registeredPig = pigService.registerPig(pig);
+        Pig registeredPig = registerServiceClient.registerPig(pig);
         sendToCuttingStation(registeredPig);
     }
 

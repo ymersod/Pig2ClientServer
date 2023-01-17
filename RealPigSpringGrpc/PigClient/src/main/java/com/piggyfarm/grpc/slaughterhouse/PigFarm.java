@@ -1,6 +1,6 @@
 package com.piggyfarm.grpc.slaughterhouse;
 
-import com.piggyfarm.grpc.model.Pig;
+import com.domain.Pig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +19,7 @@ public class PigFarm implements Runnable {
     public void run() {
         double weightRange = 19.0;
         double minWeight = 80.0;
+
         while(true)
         {
             try {

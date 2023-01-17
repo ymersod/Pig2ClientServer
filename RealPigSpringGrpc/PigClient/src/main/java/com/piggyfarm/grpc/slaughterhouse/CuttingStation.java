@@ -1,10 +1,10 @@
 package com.piggyfarm.grpc.slaughterhouse;
 
-import com.piggyfarm.grpc.model.Part;
-import com.piggyfarm.grpc.model.Pig;
-import com.piggyfarm.grpc.model.PigPartType;
-import com.piggyfarm.grpc.model.Tray;
-import com.piggyfarm.grpc.service.PigService;
+import com.domain.Part;
+import com.domain.Pig;
+import com.domain.PigPartType;
+import com.domain.Tray;
+import com.piggyfarm.grpc.service.RegisterServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +14,12 @@ import java.util.*;
 public class CuttingStation implements Runnable {
 
 	@Autowired
-	private PigService pigService;
+	private RegisterServiceClient registerServiceClient;
 
 	@Autowired
 	private PackingStation packingStation;
 	private final Queue<Pig> pigs;
 	private final HashMap<PigPartType, Tray> trays;
-
-
 
 	public CuttingStation() {
 		pigs = new ArrayDeque<>();
@@ -82,20 +80,19 @@ public class CuttingStation implements Runnable {
 
 	private void addPartToTray(Part part) {
 		try {
-			Tray tray = trays.get(part.getPartType());
+			Tray tray = trays.get(part.getType());
 			tray.addPart(part);
 		} catch (RuntimeException e) {
-			Tray oldTray = replaceTray(part.getPartType());
+			Tray oldTray = replaceTray(part.getType());
 			sendTray(oldTray);
 		}
 
-		System.out.println("Adding part: " + part.getId() + ", to tray of type: " + part.getPartType());
+		System.out.println("Adding part: " + part.getId() + ", to tray of type: " + part.getType());
 		sleep(1000);
 	}
 
 	private void sendTray(Tray tray) {
-		System.out.println(pigService);
-		Tray trayFromDB = pigService.registerTray(tray);
+		Tray trayFromDB = registerServiceClient.registerTray(tray);
 
 		packingStation.recieveTray(trayFromDB);
 		System.out.println("Sending tray: " + trayFromDB.getId() + ", to next station");
